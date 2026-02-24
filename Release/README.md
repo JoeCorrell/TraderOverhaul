@@ -40,48 +40,9 @@ Shared configs + unified buy/sell/bank workflow.
 
 ## Features
 
-<p align="left">
-<strong>Unified UI:</strong> One custom interface for Haldor, Hildir, and Bog Witch.<br/><br/>
-
-<strong>Scoped replacement:</strong> Overrides `StoreGui` only for `Haldor`, `Hildir`, and `BogWitch`; unknown traders stay vanilla.<br/><br/>
-
-<strong>Single workflow:</strong> Shared tab system for <strong>Buy</strong>, <strong>Sell</strong>, and <strong>Bank</strong>.<br/><br/>
-
-<strong>Shared bank balance:</strong> One coin balance used by all 3 traders, with deposit/withdraw and total wealth display.<br/><br/>
-
-<strong>Bank-backed transactions:</strong> Buying always spends from bank balance, and selling always deposits into bank balance.<br/><br/>
-
-<strong>Legacy bank sync:</strong> Old per-trader bank keys are migrated/mirrored into one shared balance key.<br/><br/>
-
-<strong>Shared buy config:</strong> All traders read from `TraderOverhaul.buy.json`.<br/><br/>
-
-<strong>Per-trader buy behavior:</strong> Haldor is config-driven; Hildir and Bog Witch keep vanilla stock plus config overrides/additions.<br/><br/>
-
-<strong>Shared sell config:</strong> All traders read from `TraderOverhaul.sell.json`, and only valid inventory items that meet configured stack rules appear.<br/><br/>
-
-<strong>Progression gates:</strong> Config entries respect `must_defeated_boss` unlock requirements.<br/><br/>
-
-<strong>Item navigation:</strong> Search box, category filters, collapsible category groups, and item detail panel.<br/><br/>
-
-<strong>Input support:</strong> Mouse and controller support across tabs, lists, filters, and bank actions.<br/><br/>
-
-<strong>Preview systems:</strong> Buy tab shows player equipment preview; sell tab shows the active trader preview/camera profile.<br/><br/>
-
-<strong>Config lifecycle:</strong> Missing config files are auto-created and config entries are validated on load.
+<p align="center">
+One unified custom UI for Haldor, Hildir, and Bog Witch with shared Buy, Sell, and Bank tabs; a shared bank balance across all three traders with deposit and withdraw support; bank-backed transactions where buying spends bank coins and selling deposits into bank coins; shared config files (`TraderOverhaul.buy.json` and `TraderOverhaul.sell.json`) for all traders; Haldor config-driven buy stock while Hildir and Bog Witch keep vanilla stock plus config overrides; sell entries that only appear when inventory and stack requirements match config; progression gating through `must_defeated_boss`; built-in search, category filters, collapsible groups, and item details; full mouse/controller support; player preview on Buy, trader preview on Sell; and automatic config creation/validation when files are missing.
 </p>
-
-<hr/>
-
-## Config Files
-
-`TraderOverhaul.buy.json`<br/>
-`TraderOverhaul.sell.json`
-
-`buy.json` applies to all traders.<br/>
-Hildir and Bog Witch still include their vanilla buy stock by default.<br/>
-Config entries with matching prefab names override the vanilla entry values in the UI.<br/>
-
-`sell.json` applies sell pricing/stack rules to all traders.
 
 <hr/>
 

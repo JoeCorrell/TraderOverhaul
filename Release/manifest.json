@@ -3,7 +3,7 @@
   "author": "ProfMags",
   "version_number": "0.0.1",
   "website_url": "https://github.com/JoeCorrell/TraderOverhaul",
-  "description": "Unified custom trader UI overhaul for Haldor, Hildir, and Bog Witch, with Haldor custom buy/sell logic preserved.",
+  "description": "Unified custom trader UI overhaul for Haldor, Hildir, and Bog Witch with balanced, fair prices, boss progression support, and Haldor custom buy/sell logic preserved.",
   "dependencies": [
     "denikson-BepInExPack_Valheim-5.4.2200",
     "ValheimModding-JsonDotNET-13.0.4"
