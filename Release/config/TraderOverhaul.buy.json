@@ -1,0 +1,3518 @@
+[
+  {
+    "item_prefab": "Acorn",
+    "item_quantity": 20,
+    "item_price": 6,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "AncientSeed",
+    "item_quantity": 20,
+    "item_price": 39,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "ArmorAshlandsMediumChest",
+    "item_quantity": 1,
+    "item_price": 7104,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "ArmorAshlandsMediumlegs",
+    "item_quantity": 1,
+    "item_price": 7104,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "ArmorBerserkerChest",
+    "item_quantity": 1,
+    "item_price": 2376,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "ArmorBerserkerLegs",
+    "item_quantity": 1,
+    "item_price": 2232,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "ArmorBerserkerUndeadChest",
+    "item_quantity": 1,
+    "item_price": 6912,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "ArmorBerserkerUndeadLegs",
+    "item_quantity": 1,
+    "item_price": 6912,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "ArmorBronzeChest",
+    "item_quantity": 1,
+    "item_price": 601,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "ArmorBronzeLegs",
+    "item_quantity": 1,
+    "item_price": 601,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "ArmorCarapaceChest",
+    "item_quantity": 1,
+    "item_price": 24813,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "ArmorCarapaceLegs",
+    "item_quantity": 1,
+    "item_price": 24813,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "ArmorFenringChest",
+    "item_quantity": 1,
+    "item_price": 1485,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "ArmorFenringLegs",
+    "item_quantity": 1,
+    "item_price": 1485,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "ArmorFlametalChest",
+    "item_quantity": 1,
+    "item_price": 49939,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "ArmorFlametalLegs",
+    "item_quantity": 1,
+    "item_price": 45489,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "ArmorIronChest",
+    "item_quantity": 1,
+    "item_price": 5698,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "ArmorIronLegs",
+    "item_quantity": 1,
+    "item_price": 5698,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "ArmorLeatherChest",
+    "item_quantity": 1,
+    "item_price": 99,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "ArmorLeatherLegs",
+    "item_quantity": 1,
+    "item_price": 99,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "ArmorMageChest",
+    "item_quantity": 1,
+    "item_price": 48288,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "ArmorMageChest_Ashlands",
+    "item_quantity": 1,
+    "item_price": 94041,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "ArmorMageLegs",
+    "item_quantity": 1,
+    "item_price": 50232,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "ArmorMageLegs_Ashlands",
+    "item_quantity": 1,
+    "item_price": 85670,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "ArmorPaddedCuirass",
+    "item_quantity": 1,
+    "item_price": 13397,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "ArmorPaddedGreaves",
+    "item_quantity": 1,
+    "item_price": 13397,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "ArmorRagsChest",
+    "item_quantity": 1,
+    "item_price": 50,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "ArmorRagsLegs",
+    "item_quantity": 1,
+    "item_price": 50,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "ArmorRootChest",
+    "item_quantity": 1,
+    "item_price": 1836,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "ArmorRootLegs",
+    "item_quantity": 1,
+    "item_price": 1836,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "ArmorTrollLeatherChest",
+    "item_quantity": 1,
+    "item_price": 415,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "ArmorTrollLeatherLegs",
+    "item_quantity": 1,
+    "item_price": 415,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "ArmorWolfChest",
+    "item_quantity": 1,
+    "item_price": 7551,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "ArmorWolfLegs",
+    "item_quantity": 1,
+    "item_price": 7713,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "ArrowBronze",
+    "item_quantity": 20,
+    "item_price": 148,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "ArrowCarapace",
+    "item_quantity": 20,
+    "item_price": 1780,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "ArrowCharred",
+    "item_quantity": 20,
+    "item_price": 7264,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "ArrowFire",
+    "item_quantity": 20,
+    "item_price": 78,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "ArrowFlint",
+    "item_quantity": 20,
+    "item_price": 51,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "ArrowFrost",
+    "item_quantity": 20,
+    "item_price": 945,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "ArrowIron",
+    "item_quantity": 20,
+    "item_price": 319,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "ArrowNeedle",
+    "item_quantity": 20,
+    "item_price": 852,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "ArrowObsidian",
+    "item_quantity": 20,
+    "item_price": 667,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "ArrowPoison",
+    "item_quantity": 20,
+    "item_price": 504,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "ArrowSilver",
+    "item_quantity": 20,
+    "item_price": 442,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "ArrowWood",
+    "item_quantity": 20,
+    "item_price": 27,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "AskBladder",
+    "item_quantity": 20,
+    "item_price": 614,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "AskHide",
+    "item_quantity": 20,
+    "item_price": 819,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "AsksvinCarrionNeck",
+    "item_quantity": 20,
+    "item_price": 563,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "AsksvinCarrionPelvic",
+    "item_quantity": 20,
+    "item_price": 640,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "AsksvinCarrionRibcage",
+    "item_quantity": 20,
+    "item_price": 716,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "AsksvinCarrionSkull",
+    "item_quantity": 20,
+    "item_price": 768,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "AsksvinEgg",
+    "item_quantity": 10,
+    "item_price": 2400,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "AsksvinMeat",
+    "item_quantity": 1,
+    "item_price": 672,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "AtgeirBlackmetal",
+    "item_quantity": 1,
+    "item_price": 21340,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "AtgeirBronze",
+    "item_quantity": 1,
+    "item_price": 943,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "AtgeirHimminAfl",
+    "item_quantity": 1,
+    "item_price": 44746,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "AtgeirIron",
+    "item_quantity": 1,
+    "item_price": 8271,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "AtgeirWood",
+    "item_quantity": 1,
+    "item_price": 196,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "AxeBerzerkr",
+    "item_quantity": 1,
+    "item_price": 43712,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "AxeBerzerkrBlood",
+    "item_quantity": 1,
+    "item_price": 48000,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "AxeBerzerkrLightning",
+    "item_quantity": 1,
+    "item_price": 48000,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "AxeBerzerkrNature",
+    "item_quantity": 1,
+    "item_price": 48000,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "AxeBlackMetal",
+    "item_quantity": 1,
+    "item_price": 11256,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "AxeBronze",
+    "item_quantity": 1,
+    "item_price": 687,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "AxeFlint",
+    "item_quantity": 1,
+    "item_price": 54,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "AxeIron",
+    "item_quantity": 1,
+    "item_price": 4230,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "AxeJotunBane",
+    "item_quantity": 1,
+    "item_price": 34220,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "AxeStone",
+    "item_quantity": 1,
+    "item_price": 30,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "AxeWood",
+    "item_quantity": 1,
+    "item_price": 137,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "BarberKit",
+    "item_quantity": 1,
+    "item_price": 4800,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "Barley",
+    "item_quantity": 1,
+    "item_price": 168,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "BarleyFlour",
+    "item_quantity": 1,
+    "item_price": 201,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "BarleyWine",
+    "item_quantity": 1,
+    "item_price": 1176,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "BarleyWineBase",
+    "item_quantity": 10,
+    "item_price": 2898,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "BarrelRings",
+    "item_quantity": 20,
+    "item_price": 563,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "Battleaxe",
+    "item_quantity": 1,
+    "item_price": 11565,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "BattleaxeBlackmetal",
+    "item_quantity": 1,
+    "item_price": 3120,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "BattleaxeCrystal",
+    "item_quantity": 1,
+    "item_price": 1706,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "BattleaxeSkullSplittur",
+    "item_quantity": 1,
+    "item_price": 5200,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "BattleaxeWood",
+    "item_quantity": 1,
+    "item_price": 214,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "BBH_BlackForest_Bow",
+    "item_quantity": 1,
+    "item_price": 242,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "BBH_BlackForest_Quiver",
+    "item_quantity": 1,
+    "item_price": 261,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "BBH_OdinPlus_Quiver",
+    "item_quantity": 1,
+    "item_price": 21248,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "BBH_PlainsLox_Quiver",
+    "item_quantity": 1,
+    "item_price": 7814,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "BBH_Seeker_Bow",
+    "item_quantity": 1,
+    "item_price": 4246,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "BBH_Seeker_Quiver",
+    "item_quantity": 1,
+    "item_price": 2752,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "BBH_Surtling_Bow",
+    "item_quantity": 1,
+    "item_price": 15508,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "BeechSeeds",
+    "item_quantity": 20,
+    "item_price": 5,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "Bell",
+    "item_quantity": 1,
+    "item_price": 13235,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "BellFragment",
+    "item_quantity": 5,
+    "item_price": 7680,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "BeltStrength",
+    "item_quantity": 1,
+    "item_price": 2400,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "Bilebag",
+    "item_quantity": 20,
+    "item_price": 665,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "BirchSeeds",
+    "item_quantity": 20,
+    "item_price": 5,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "BjornHide",
+    "item_quantity": 20,
+    "item_price": 192,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "BjornMeat",
+    "item_quantity": 1,
+    "item_price": 168,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "BjornPaw",
+    "item_quantity": 20,
+    "item_price": 153,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "BlackCore",
+    "item_quantity": 10,
+    "item_price": 3315,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "BlackMarble",
+    "item_quantity": 20,
+    "item_price": 256,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "BlackMetal",
+    "item_quantity": 15,
+    "item_price": 336,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "BlackMetalScrap",
+    "item_quantity": 15,
+    "item_price": 240,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "BlackSoup",
+    "item_quantity": 1,
+    "item_price": 270,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "Blackwood",
+    "item_quantity": 20,
+    "item_price": 460,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "BlobVial",
+    "item_quantity": 20,
+    "item_price": 720,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "Bloodbag",
+    "item_quantity": 20,
+    "item_price": 86,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "BloodPudding",
+    "item_quantity": 1,
+    "item_price": 2148,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "Blueberries",
+    "item_quantity": 1,
+    "item_price": 5,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "BoarJerky",
+    "item_quantity": 1,
+    "item_price": 60,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "BoltBlackmetal",
+    "item_quantity": 20,
+    "item_price": 2100,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "BoltBone",
+    "item_quantity": 20,
+    "item_price": 860,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "BoltCarapace",
+    "item_quantity": 20,
+    "item_price": 1140,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "BoltCharred",
+    "item_quantity": 20,
+    "item_price": 6400,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "BoltIron",
+    "item_quantity": 20,
+    "item_price": 1420,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "BombBile",
+    "item_quantity": 20,
+    "item_price": 640,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "BombBlob_Frost",
+    "item_quantity": 20,
+    "item_price": 390,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "BombBlob_Lava",
+    "item_quantity": 20,
+    "item_price": 2432,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "BombBlob_Poison",
+    "item_quantity": 20,
+    "item_price": 198,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "BombBlob_PoisonElite",
+    "item_quantity": 20,
+    "item_price": 270,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "BombBlob_Tar",
+    "item_quantity": 20,
+    "item_price": 576,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "BombLava",
+    "item_quantity": 20,
+    "item_price": 2304,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "BombOoze",
+    "item_quantity": 20,
+    "item_price": 144,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "BombSiege",
+    "item_quantity": 10,
+    "item_price": 4096,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "BombSmoke",
+    "item_quantity": 20,
+    "item_price": 896,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "BoneFragments",
+    "item_quantity": 20,
+    "item_price": 5,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "BoneMawSerpentMeat",
+    "item_quantity": 1,
+    "item_price": 1568,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "BonemawSerpentScale",
+    "item_quantity": 20,
+    "item_price": 1152,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "BonemawSerpentTooth",
+    "item_quantity": 20,
+    "item_price": 1408,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "Bow",
+    "item_quantity": 1,
+    "item_price": 113,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "BowAshlands",
+    "item_quantity": 1,
+    "item_price": 33862,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "BowAshlandsBlood",
+    "item_quantity": 1,
+    "item_price": 49280,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "BowAshlandsRoot",
+    "item_quantity": 1,
+    "item_price": 49280,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "BowAshlandsStorm",
+    "item_quantity": 1,
+    "item_price": 49280,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "BowDraugrFang",
+    "item_quantity": 1,
+    "item_price": 9157,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "BowFineWood",
+    "item_quantity": 1,
+    "item_price": 541,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "BowHuntsman",
+    "item_quantity": 1,
+    "item_price": 5152,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "BowSpineSnap",
+    "item_quantity": 1,
+    "item_price": 22000,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "Bread",
+    "item_quantity": 1,
+    "item_price": 1324,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "BreadDough",
+    "item_quantity": 10,
+    "item_price": 288,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "Bronze",
+    "item_quantity": 15,
+    "item_price": 105,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "BronzeNails",
+    "item_quantity": 50,
+    "item_price": 11,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "BronzeScrap",
+    "item_quantity": 15,
+    "item_price": 44,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "BugMeat",
+    "item_quantity": 1,
+    "item_price": 896,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "CandleWick",
+    "item_quantity": 20,
+    "item_price": 307,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "CapeAsh",
+    "item_quantity": 1,
+    "item_price": 14443,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "CapeAsksvin",
+    "item_quantity": 1,
+    "item_price": 8486,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "CapeDeerHide",
+    "item_quantity": 1,
+    "item_price": 75,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "CapeFeather",
+    "item_quantity": 1,
+    "item_price": 16768,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "CapeLinen",
+    "item_quantity": 1,
+    "item_price": 4100,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "CapeLox",
+    "item_quantity": 1,
+    "item_price": 4641,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "CapeTrollHide",
+    "item_quantity": 1,
+    "item_price": 698,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "CapeWolf",
+    "item_quantity": 1,
+    "item_price": 765,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "Carapace",
+    "item_quantity": 20,
+    "item_price": 224,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "Carrot",
+    "item_quantity": 1,
+    "item_price": 10,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "CarrotSeeds",
+    "item_quantity": 20,
+    "item_price": 5,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "CarrotSoup",
+    "item_quantity": 1,
+    "item_price": 66,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "Catapult_ammo",
+    "item_quantity": 10,
+    "item_price": 2048,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "CelestialFeather",
+    "item_quantity": 10,
+    "item_price": 2995,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "CeramicPlate",
+    "item_quantity": 20,
+    "item_price": 409,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "Chain",
+    "item_quantity": 20,
+    "item_price": 486,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "CharcoalResin",
+    "item_quantity": 20,
+    "item_price": 256,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "CharredBone",
+    "item_quantity": 20,
+    "item_price": 307,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "CharredCogwheel",
+    "item_quantity": 20,
+    "item_price": 716,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "Charredskull",
+    "item_quantity": 20,
+    "item_price": 512,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "ChickenEgg",
+    "item_quantity": 20,
+    "item_price": 720,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "ChickenMeat",
+    "item_quantity": 1,
+    "item_price": 784,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "Chitin",
+    "item_quantity": 20,
+    "item_price": 100,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "Cloudberry",
+    "item_quantity": 1,
+    "item_price": 96,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "Club",
+    "item_quantity": 1,
+    "item_price": 22,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "Coal",
+    "item_quantity": 10,
+    "item_price": 6,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "CookedAsksvinMeat",
+    "item_quantity": 10,
+    "item_price": 4800,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "CookedBjornMeat",
+    "item_quantity": 10,
+    "item_price": 4800,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "CookedBoneMawSerpentMeat",
+    "item_quantity": 10,
+    "item_price": 5440,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "CookedBugMeat",
+    "item_quantity": 1,
+    "item_price": 2200,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "CookedChickenMeat",
+    "item_quantity": 1,
+    "item_price": 2200,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "CookedDeerMeat",
+    "item_quantity": 1,
+    "item_price": 36,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "CookedEgg",
+    "item_quantity": 1,
+    "item_price": 2880,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "CookedHareMeat",
+    "item_quantity": 1,
+    "item_price": 2080,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "CookedLoxMeat",
+    "item_quantity": 1,
+    "item_price": 1320,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "CookedMeat",
+    "item_quantity": 1,
+    "item_price": 36,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "CookedVoltureMeat",
+    "item_quantity": 10,
+    "item_price": 4608,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "CookedWolfMeat",
+    "item_quantity": 1,
+    "item_price": 420,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "Copper",
+    "item_quantity": 15,
+    "item_price": 30,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "CopperOre",
+    "item_quantity": 1,
+    "item_price": 22,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "CopperScrap",
+    "item_quantity": 15,
+    "item_price": 26,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "CrossbowArbalest",
+    "item_quantity": 1,
+    "item_price": 11825,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "CrossbowRipper",
+    "item_quantity": 1,
+    "item_price": 36040,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "CrossbowRipperBlood",
+    "item_quantity": 1,
+    "item_price": 60000,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "CrossbowRipperLightning",
+    "item_quantity": 1,
+    "item_price": 60000,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "CrossbowRipperNature",
+    "item_quantity": 1,
+    "item_price": 60000,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "CryptKey",
+    "item_quantity": 1,
+    "item_price": 1331,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "Crystal",
+    "item_quantity": 20,
+    "item_price": 120,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "Cultivator",
+    "item_quantity": 1,
+    "item_price": 415,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "CuredSquirrelHamstring",
+    "item_quantity": 20,
+    "item_price": 768,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "Dandelion",
+    "item_quantity": 20,
+    "item_price": 5,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "DeerHide",
+    "item_quantity": 20,
+    "item_price": 9,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "DeerMeat",
+    "item_quantity": 1,
+    "item_price": 12,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "DeerStew",
+    "item_quantity": 1,
+    "item_price": 84,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "Demister",
+    "item_quantity": 1,
+    "item_price": 1104,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "DragonEgg",
+    "item_quantity": 1,
+    "item_price": 8437,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "DragonTear",
+    "item_quantity": 1,
+    "item_price": 4500,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "DvergrKey",
+    "item_quantity": 1,
+    "item_price": 11520,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "DvergrKeyFragment",
+    "item_quantity": 5,
+    "item_price": 4000,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "DvergrNeedle",
+    "item_quantity": 20,
+    "item_price": 352,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "DyrnwynBladeFragment",
+    "item_quantity": 5,
+    "item_price": 12800,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "DyrnwynHiltFragment",
+    "item_quantity": 5,
+    "item_price": 12800,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "DyrnwynTipFragment",
+    "item_quantity": 5,
+    "item_price": 12800,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "Ectoplasm",
+    "item_quantity": 20,
+    "item_price": 378,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "Eitr",
+    "item_quantity": 15,
+    "item_price": 3510,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "ElderBark",
+    "item_quantity": 20,
+    "item_price": 36,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "Entrails",
+    "item_quantity": 20,
+    "item_price": 72,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "Eyescream",
+    "item_quantity": 1,
+    "item_price": 342,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "FaderDrop",
+    "item_quantity": 1,
+    "item_price": 99999,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "FeastAshlands",
+    "item_quantity": 1,
+    "item_price": 9702,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "FeastBlackforest",
+    "item_quantity": 1,
+    "item_price": 1031,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "Feaster",
+    "item_quantity": 1,
+    "item_price": 66,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "FeastMeadows",
+    "item_quantity": 1,
+    "item_price": 255,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "FeastMistlands",
+    "item_quantity": 1,
+    "item_price": 12976,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "FeastMountains",
+    "item_quantity": 1,
+    "item_price": 2052,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "FeastOceans",
+    "item_quantity": 1,
+    "item_price": 1796,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "FeastPlains",
+    "item_quantity": 1,
+    "item_price": 7392,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "FeastSwamps",
+    "item_quantity": 1,
+    "item_price": 1962,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "Feathers",
+    "item_quantity": 20,
+    "item_price": 5,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "Fiddleheadfern",
+    "item_quantity": 20,
+    "item_price": 256,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "FierySvinstew",
+    "item_quantity": 10,
+    "item_price": 3328,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "FineWood",
+    "item_quantity": 20,
+    "item_price": 13,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "FirCone",
+    "item_quantity": 20,
+    "item_price": 5,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "FireworksRocket_Blue",
+    "item_quantity": 20,
+    "item_price": 172,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "FireworksRocket_Cyan",
+    "item_quantity": 20,
+    "item_price": 172,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "FireworksRocket_Green",
+    "item_quantity": 20,
+    "item_price": 172,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "FireworksRocket_Purple",
+    "item_quantity": 20,
+    "item_price": 172,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "FireworksRocket_Red",
+    "item_quantity": 20,
+    "item_price": 172,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "FireworksRocket_White",
+    "item_quantity": 20,
+    "item_price": 172,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "FireworksRocket_Yellow",
+    "item_quantity": 20,
+    "item_price": 172,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "Fish1",
+    "item_quantity": 20,
+    "item_price": 62,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "Fish10",
+    "item_quantity": 20,
+    "item_price": 4031,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "Fish11",
+    "item_quantity": 20,
+    "item_price": 75,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "Fish12",
+    "item_quantity": 20,
+    "item_price": 62,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "Fish2",
+    "item_quantity": 20,
+    "item_price": 75,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "Fish3",
+    "item_quantity": 20,
+    "item_price": 62,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "Fish4_cave",
+    "item_quantity": 20,
+    "item_price": 616,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "Fish5",
+    "item_quantity": 20,
+    "item_price": 840,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "Fish6",
+    "item_quantity": 20,
+    "item_price": 189,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "Fish7",
+    "item_quantity": 20,
+    "item_price": 168,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "Fish8",
+    "item_quantity": 20,
+    "item_price": 588,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "Fish9",
+    "item_quantity": 20,
+    "item_price": 1120,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "FishAndBread",
+    "item_quantity": 1,
+    "item_price": 923,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "FishAnglerRaw",
+    "item_quantity": 20,
+    "item_price": 616,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "FishCooked",
+    "item_quantity": 10,
+    "item_price": 113,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "FishingBait",
+    "item_quantity": 50,
+    "item_price": 12,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "FishingBaitAshlands",
+    "item_quantity": 50,
+    "item_price": 1344,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "FishingBaitCave",
+    "item_quantity": 50,
+    "item_price": 125,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "FishingBaitDeepNorth",
+    "item_quantity": 50,
+    "item_price": 2800,
+    "must_defeated_boss": "defeated_fader"
+  },
+  {
+    "item_prefab": "FishingBaitForest",
+    "item_quantity": 50,
+    "item_price": 25,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "FishingBaitMistlands",
+    "item_quantity": 50,
+    "item_price": 280,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "FishingBaitOcean",
+    "item_quantity": 50,
+    "item_price": 50,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "FishingBaitPlains",
+    "item_quantity": 50,
+    "item_price": 201,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "FishingBaitSwamp",
+    "item_quantity": 50,
+    "item_price": 50,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "FishingRod",
+    "item_quantity": 1,
+    "item_price": 936,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "FishRaw",
+    "item_quantity": 20,
+    "item_price": 62,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "FishWraps",
+    "item_quantity": 1,
+    "item_price": 2316,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "FistBjornClaw",
+    "item_quantity": 1,
+    "item_price": 1008,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "FistFenrirClaw",
+    "item_quantity": 1,
+    "item_price": 5436,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "Flametal",
+    "item_quantity": 15,
+    "item_price": 972,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "FlametalNew",
+    "item_quantity": 15,
+    "item_price": 972,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "FlametalOre",
+    "item_quantity": 1,
+    "item_price": 460,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "FlametalOreNew",
+    "item_quantity": 1,
+    "item_price": 460,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "Flax",
+    "item_quantity": 1,
+    "item_price": 192,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "Flint",
+    "item_quantity": 20,
+    "item_price": 5,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "FreezeGland",
+    "item_quantity": 20,
+    "item_price": 192,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "GemstoneBlue",
+    "item_quantity": 10,
+    "item_price": 1920,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "GemstoneGreen",
+    "item_quantity": 10,
+    "item_price": 1920,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "GemstoneRed",
+    "item_quantity": 10,
+    "item_price": 1920,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "GoblinTotem",
+    "item_quantity": 10,
+    "item_price": 873,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "GreydwarfEye",
+    "item_quantity": 20,
+    "item_price": 13,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "Guck",
+    "item_quantity": 20,
+    "item_price": 55,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "Hammer",
+    "item_quantity": 1,
+    "item_price": 18,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "HardAntler",
+    "item_quantity": 1,
+    "item_price": 600,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "HareMeat",
+    "item_quantity": 1,
+    "item_price": 728,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "HelmetAshlandsMediumHood",
+    "item_quantity": 1,
+    "item_price": 6144,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "HelmetBerserkerHood",
+    "item_quantity": 1,
+    "item_price": 2088,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "HelmetBerserkerUndead",
+    "item_quantity": 1,
+    "item_price": 6144,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "HelmetBronze",
+    "item_quantity": 1,
+    "item_price": 601,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "HelmetCarapace",
+    "item_quantity": 1,
+    "item_price": 18495,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "HelmetDrake",
+    "item_quantity": 1,
+    "item_price": 1260,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "HelmetDverger",
+    "item_quantity": 1,
+    "item_price": 2880,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "HelmetFenring",
+    "item_quantity": 1,
+    "item_price": 1350,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "HelmetFishingHat",
+    "item_quantity": 1,
+    "item_price": 243,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "HelmetFlametal",
+    "item_quantity": 1,
+    "item_price": 49075,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "HelmetIron",
+    "item_quantity": 1,
+    "item_price": 5698,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "HelmetLeather",
+    "item_quantity": 1,
+    "item_price": 99,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "HelmetMage",
+    "item_quantity": 1,
+    "item_price": 36168,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "HelmetMage_Ashlands",
+    "item_quantity": 1,
+    "item_price": 57177,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "HelmetPadded",
+    "item_quantity": 1,
+    "item_price": 11923,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "HelmetRoot",
+    "item_quantity": 1,
+    "item_price": 1863,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "HelmetTrollLeather",
+    "item_quantity": 1,
+    "item_price": 462,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "HelmetYule",
+    "item_quantity": 1,
+    "item_price": 36,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "Hoe",
+    "item_quantity": 1,
+    "item_price": 24,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "Honey",
+    "item_quantity": 1,
+    "item_price": 31,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "HoneyGlazedChicken",
+    "item_quantity": 1,
+    "item_price": 4144,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "Iron",
+    "item_quantity": 15,
+    "item_price": 144,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "IronNails",
+    "item_quantity": 50,
+    "item_price": 21,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "IronOre",
+    "item_quantity": 1,
+    "item_price": 64,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "IronScrap",
+    "item_quantity": 15,
+    "item_price": 64,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "JuteBlue",
+    "item_quantity": 20,
+    "item_price": 960,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "JuteRed",
+    "item_quantity": 20,
+    "item_price": 960,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "KnifeBlackMetal",
+    "item_quantity": 1,
+    "item_price": 1680,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "KnifeButcher",
+    "item_quantity": 1,
+    "item_price": 189,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "KnifeChitin",
+    "item_quantity": 1,
+    "item_price": 3073,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "KnifeCopper",
+    "item_quantity": 1,
+    "item_price": 365,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "KnifeFlint",
+    "item_quantity": 1,
+    "item_price": 51,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "KnifeSilver",
+    "item_quantity": 1,
+    "item_price": 3435,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "KnifeSkollAndHati",
+    "item_quantity": 1,
+    "item_price": 10680,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "KnifeWood",
+    "item_quantity": 1,
+    "item_price": 137,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "Lantern",
+    "item_quantity": 1,
+    "item_price": 828,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "LeatherScraps",
+    "item_quantity": 20,
+    "item_price": 6,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "LinenThread",
+    "item_quantity": 20,
+    "item_price": 184,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "LoxMeat",
+    "item_quantity": 1,
+    "item_price": 201,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "LoxPelt",
+    "item_quantity": 20,
+    "item_price": 537,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "LoxPie",
+    "item_quantity": 1,
+    "item_price": 2256,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "MaceBronze",
+    "item_quantity": 1,
+    "item_price": 704,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "MaceEldner",
+    "item_quantity": 1,
+    "item_price": 32224,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "MaceEldnerBlood",
+    "item_quantity": 1,
+    "item_price": 44800,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "MaceEldnerLightning",
+    "item_quantity": 1,
+    "item_price": 44800,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "MaceEldnerNature",
+    "item_quantity": 1,
+    "item_price": 44800,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "MaceIron",
+    "item_quantity": 1,
+    "item_price": 4257,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "MaceNeedle",
+    "item_quantity": 1,
+    "item_price": 14628,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "MaceSilver",
+    "item_quantity": 1,
+    "item_price": 15172,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "MaceWood",
+    "item_quantity": 1,
+    "item_price": 137,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "MagicallyStuffedShroom",
+    "item_quantity": 1,
+    "item_price": 3360,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "Mandible",
+    "item_quantity": 20,
+    "item_price": 416,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "MarinatedGreens",
+    "item_quantity": 1,
+    "item_price": 8704,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "MashedMeat",
+    "item_quantity": 1,
+    "item_price": 1836,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "MeadBaseBugRepellent",
+    "item_quantity": 1,
+    "item_price": 2318,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "MeadBaseBzerker",
+    "item_quantity": 1,
+    "item_price": 3801,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "MeadBaseEitrLingering",
+    "item_quantity": 10,
+    "item_price": 6528,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "MeadBaseEitrMinor",
+    "item_quantity": 10,
+    "item_price": 24048,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "MeadBaseFrostResist",
+    "item_quantity": 10,
+    "item_price": 3969,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "MeadBaseHasty",
+    "item_quantity": 1,
+    "item_price": 15859,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "MeadBaseHealthLingering",
+    "item_quantity": 10,
+    "item_price": 2880,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "MeadBaseHealthMajor",
+    "item_quantity": 10,
+    "item_price": 3360,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "MeadBaseHealthMedium",
+    "item_quantity": 10,
+    "item_price": 2716,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "MeadBaseHealthMinor",
+    "item_quantity": 10,
+    "item_price": 2214,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "MeadBaseLightFoot",
+    "item_quantity": 1,
+    "item_price": 12552,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "MeadBasePoisonResist",
+    "item_quantity": 10,
+    "item_price": 2419,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "MeadBaseStaminaLingering",
+    "item_quantity": 10,
+    "item_price": 21504,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "MeadBaseStaminaMedium",
+    "item_quantity": 10,
+    "item_price": 3229,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "MeadBaseStaminaMinor",
+    "item_quantity": 10,
+    "item_price": 2856,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "MeadBaseStrength",
+    "item_quantity": 1,
+    "item_price": 682,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "MeadBaseSwimmer",
+    "item_quantity": 1,
+    "item_price": 102,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "MeadBaseTamer",
+    "item_quantity": 1,
+    "item_price": 2169,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "MeadBaseTasty",
+    "item_quantity": 10,
+    "item_price": 2203,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "MeadBugRepellent",
+    "item_quantity": 10,
+    "item_price": 2640,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "MeadBzerker",
+    "item_quantity": 10,
+    "item_price": 1584,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "MeadEitrLingering",
+    "item_quantity": 10,
+    "item_price": 9216,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "MeadEitrMinor",
+    "item_quantity": 10,
+    "item_price": 3840,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "MeadFrostResist",
+    "item_quantity": 10,
+    "item_price": 720,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "MeadHasty",
+    "item_quantity": 10,
+    "item_price": 810,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "MeadHealthLingering",
+    "item_quantity": 10,
+    "item_price": 2400,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "MeadHealthMajor",
+    "item_quantity": 10,
+    "item_price": 4800,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "MeadHealthMedium",
+    "item_quantity": 10,
+    "item_price": 486,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "MeadHealthMinor",
+    "item_quantity": 10,
+    "item_price": 270,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "MeadLightfoot",
+    "item_quantity": 10,
+    "item_price": 810,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "MeadPoisonResist",
+    "item_quantity": 10,
+    "item_price": 432,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "MeadStaminaLingering",
+    "item_quantity": 10,
+    "item_price": 4320,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "MeadStaminaMedium",
+    "item_quantity": 10,
+    "item_price": 486,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "MeadStaminaMinor",
+    "item_quantity": 10,
+    "item_price": 270,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "MeadStrength",
+    "item_quantity": 10,
+    "item_price": 231,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "MeadSwimmer",
+    "item_quantity": 10,
+    "item_price": 378,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "MeadTasty",
+    "item_quantity": 10,
+    "item_price": 216,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "MeadTrollPheromones",
+    "item_quantity": 10,
+    "item_price": 264,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "MeatPlatter",
+    "item_quantity": 1,
+    "item_price": 3080,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "MechanicalSpring",
+    "item_quantity": 1,
+    "item_price": 3392,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "MinceMeatSauce",
+    "item_quantity": 1,
+    "item_price": 35,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "MisthareSupreme",
+    "item_quantity": 1,
+    "item_price": 4416,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "MistTorchArrow",
+    "item_quantity": 20,
+    "item_price": 3865,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "MorgenHeart",
+    "item_quantity": 10,
+    "item_price": 3916,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "MorgenSinew",
+    "item_quantity": 20,
+    "item_price": 1024,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "Mushroom",
+    "item_quantity": 1,
+    "item_price": 6,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "MushroomBlue",
+    "item_quantity": 1,
+    "item_price": 30,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "MushroomBzerker",
+    "item_quantity": 1,
+    "item_price": 420,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "MushroomJotunPuffs",
+    "item_quantity": 1,
+    "item_price": 784,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "MushroomMagecap",
+    "item_quantity": 1,
+    "item_price": 1120,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "MushroomOmelette",
+    "item_quantity": 1,
+    "item_price": 5520,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "MushroomSmokePuff",
+    "item_quantity": 1,
+    "item_price": 560,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "MushroomYellow",
+    "item_quantity": 1,
+    "item_price": 12,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "NeckTail",
+    "item_quantity": 1,
+    "item_price": 12,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "NeckTailGrilled",
+    "item_quantity": 1,
+    "item_price": 14,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "Needle",
+    "item_quantity": 20,
+    "item_price": 134,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "Obsidian",
+    "item_quantity": 20,
+    "item_price": 84,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "Onion",
+    "item_quantity": 1,
+    "item_price": 105,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "OnionSeeds",
+    "item_quantity": 20,
+    "item_price": 42,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "OnionSoup",
+    "item_quantity": 1,
+    "item_price": 450,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "Ooze",
+    "item_quantity": 20,
+    "item_price": 36,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "PickaxeAntler",
+    "item_quantity": 1,
+    "item_price": 136,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "PickaxeBlackMetal",
+    "item_quantity": 1,
+    "item_price": 17856,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "PickaxeBronze",
+    "item_quantity": 1,
+    "item_price": 693,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "PickaxeIron",
+    "item_quantity": 1,
+    "item_price": 3409,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "PickaxeStone",
+    "item_quantity": 1,
+    "item_price": 34,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "PineCone",
+    "item_quantity": 20,
+    "item_price": 5,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "PiquantPie",
+    "item_quantity": 10,
+    "item_price": 10240,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "ProustitePowder",
+    "item_quantity": 20,
+    "item_price": 716,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "Pukeberries",
+    "item_quantity": 20,
+    "item_price": 7,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "QueenBee",
+    "item_quantity": 10,
+    "item_price": 90,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "QueenDrop",
+    "item_quantity": 1,
+    "item_price": 44000,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "QueensJam",
+    "item_quantity": 1,
+    "item_price": 75,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "Raspberry",
+    "item_quantity": 1,
+    "item_price": 5,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "RawMeat",
+    "item_quantity": 1,
+    "item_price": 10,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "Resin",
+    "item_quantity": 20,
+    "item_price": 5,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "RoastedCrustPie",
+    "item_quantity": 10,
+    "item_price": 8960,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "Root",
+    "item_quantity": 20,
+    "item_price": 64,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "RoyalJelly",
+    "item_quantity": 20,
+    "item_price": 3360,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "SaddleAsksvin",
+    "item_quantity": 1,
+    "item_price": 20838,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "SaddleLox",
+    "item_quantity": 1,
+    "item_price": 1612,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "Salad",
+    "item_quantity": 1,
+    "item_price": 1568,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "Sap",
+    "item_quantity": 20,
+    "item_price": 192,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "Sausages",
+    "item_quantity": 1,
+    "item_price": 144,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "ScaleHide",
+    "item_quantity": 20,
+    "item_price": 320,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "ScorchingMedley",
+    "item_quantity": 10,
+    "item_price": 3072,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "Scythe",
+    "item_quantity": 1,
+    "item_price": 1308,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "ScytheHandle",
+    "item_quantity": 1,
+    "item_price": 432,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "SeekerArrow",
+    "item_quantity": 20,
+    "item_price": 819,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "SeekerAspic",
+    "item_quantity": 1,
+    "item_price": 4224,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "SerpentMeat",
+    "item_quantity": 1,
+    "item_price": 220,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "SerpentMeatCooked",
+    "item_quantity": 1,
+    "item_price": 346,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "SerpentScale",
+    "item_quantity": 20,
+    "item_price": 324,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "SerpentStew",
+    "item_quantity": 1,
+    "item_price": 909,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "SharpeningStone",
+    "item_quantity": 1,
+    "item_price": 13,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "ShieldBanded",
+    "item_quantity": 1,
+    "item_price": 1079,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "ShieldBlackmetal",
+    "item_quantity": 1,
+    "item_price": 6706,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "ShieldBlackmetalTower",
+    "item_quantity": 1,
+    "item_price": 8931,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "ShieldBoneTower",
+    "item_quantity": 1,
+    "item_price": 139,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "ShieldBronzeBuckler",
+    "item_quantity": 1,
+    "item_price": 732,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "ShieldCarapace",
+    "item_quantity": 1,
+    "item_price": 20484,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "ShieldCarapaceBuckler",
+    "item_quantity": 1,
+    "item_price": 19332,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "ShieldCore",
+    "item_quantity": 1,
+    "item_price": 6451,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "ShieldFlametal",
+    "item_quantity": 1,
+    "item_price": 18144,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "ShieldFlametalTower",
+    "item_quantity": 1,
+    "item_price": 26812,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "ShieldIronBuckler",
+    "item_quantity": 1,
+    "item_price": 2045,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "ShieldIronSquare",
+    "item_quantity": 1,
+    "item_price": 1397,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "ShieldIronTower",
+    "item_quantity": 1,
+    "item_price": 2280,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "ShieldSerpentscale",
+    "item_quantity": 1,
+    "item_price": 7296,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "ShieldSilver",
+    "item_quantity": 1,
+    "item_price": 2328,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "ShieldWood",
+    "item_quantity": 1,
+    "item_price": 79,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "ShieldWoodTower",
+    "item_quantity": 1,
+    "item_price": 76,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "ShocklateSmoothie",
+    "item_quantity": 1,
+    "item_price": 97,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "Silver",
+    "item_quantity": 15,
+    "item_price": 180,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "SilverOre",
+    "item_quantity": 1,
+    "item_price": 132,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "SizzlingBerryBroth",
+    "item_quantity": 10,
+    "item_price": 4704,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "SledgeDemolisher",
+    "item_quantity": 1,
+    "item_price": 52910,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "SledgeIron",
+    "item_quantity": 1,
+    "item_price": 12442,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "SledgeStagbreaker",
+    "item_quantity": 1,
+    "item_price": 3588,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "SledgeWood",
+    "item_quantity": 1,
+    "item_price": 178,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "Sparkler",
+    "item_quantity": 20,
+    "item_price": 9,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "SparklingShroomshake",
+    "item_quantity": 10,
+    "item_price": 6400,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "SpearBronze",
+    "item_quantity": 1,
+    "item_price": 555,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "SpearCarapace",
+    "item_quantity": 1,
+    "item_price": 9840,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "SpearChitin",
+    "item_quantity": 1,
+    "item_price": 4671,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "SpearElderbark",
+    "item_quantity": 1,
+    "item_price": 3042,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "SpearFlint",
+    "item_quantity": 1,
+    "item_price": 103,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "SpearSplitner",
+    "item_quantity": 1,
+    "item_price": 23424,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "SpearSplitner_Blood",
+    "item_quantity": 1,
+    "item_price": 41600,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "SpearSplitner_Lightning",
+    "item_quantity": 1,
+    "item_price": 41600,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "SpearSplitner_Nature",
+    "item_quantity": 1,
+    "item_price": 41600,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "SpearWolfFang",
+    "item_quantity": 1,
+    "item_price": 1942,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "SpearWood",
+    "item_quantity": 1,
+    "item_price": 137,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "SpicyMarmalade",
+    "item_quantity": 10,
+    "item_price": 2816,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "StaffClusterbomb",
+    "item_quantity": 1,
+    "item_price": 15336,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "StaffFireball",
+    "item_quantity": 1,
+    "item_price": 58374,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "StaffGreenRoots",
+    "item_quantity": 1,
+    "item_price": 19872,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "StaffIceShards",
+    "item_quantity": 1,
+    "item_price": 56133,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "StaffLightning",
+    "item_quantity": 1,
+    "item_price": 29894,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "StaffRedTroll",
+    "item_quantity": 1,
+    "item_price": 4185,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "StaffShield",
+    "item_quantity": 1,
+    "item_price": 4185,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "StaffSkeleton",
+    "item_quantity": 1,
+    "item_price": 4455,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "Stone",
+    "item_quantity": 20,
+    "item_price": 5,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "SurtlingCore",
+    "item_quantity": 10,
+    "item_price": 330,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "SwordBlackmetal",
+    "item_quantity": 1,
+    "item_price": 10920,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "SwordBronze",
+    "item_quantity": 1,
+    "item_price": 676,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "SwordIron",
+    "item_quantity": 1,
+    "item_price": 4234,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "SwordMistwalker",
+    "item_quantity": 1,
+    "item_price": 31220,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "SwordNiedhogg",
+    "item_quantity": 1,
+    "item_price": 20448,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "SwordNiedhoggBlood",
+    "item_quantity": 1,
+    "item_price": 44800,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "SwordNiedhoggLightning",
+    "item_quantity": 1,
+    "item_price": 44800,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "SwordNiedhoggNature",
+    "item_quantity": 1,
+    "item_price": 44800,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "SwordSilver",
+    "item_quantity": 1,
+    "item_price": 12232,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "SwordWood",
+    "item_quantity": 1,
+    "item_price": 137,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "Tankard",
+    "item_quantity": 1,
+    "item_price": 90,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "TankardAnniversary",
+    "item_quantity": 1,
+    "item_price": 720,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "TankardOdin",
+    "item_quantity": 1,
+    "item_price": 151,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "Tar",
+    "item_quantity": 20,
+    "item_price": 172,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "Thistle",
+    "item_quantity": 20,
+    "item_price": 13,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "THSwordSlayer",
+    "item_quantity": 1,
+    "item_price": 67891,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "THSwordSlayerBlood",
+    "item_quantity": 1,
+    "item_price": 91520,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "THSwordSlayerLightning",
+    "item_quantity": 1,
+    "item_price": 91520,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "THSwordSlayerNature",
+    "item_quantity": 1,
+    "item_price": 91520,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "THSwordWood",
+    "item_quantity": 1,
+    "item_price": 178,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "Thunderstone",
+    "item_quantity": 10,
+    "item_price": 990,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "Tin",
+    "item_quantity": 15,
+    "item_price": 30,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "TinOre",
+    "item_quantity": 1,
+    "item_price": 22,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "Torch",
+    "item_quantity": 1,
+    "item_price": 12,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "TorchArrow",
+    "item_quantity": 20,
+    "item_price": 72,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "TorchMist",
+    "item_quantity": 1,
+    "item_price": 156,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "TrinketBlackDamageHealth",
+    "item_quantity": 1,
+    "item_price": 5126,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "TrinketBlackStamina",
+    "item_quantity": 1,
+    "item_price": 3801,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "TrinketBronzeHealth",
+    "item_quantity": 1,
+    "item_price": 567,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "TrinketBronzeStamina",
+    "item_quantity": 1,
+    "item_price": 1177,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "TrinketCarapaceEitr",
+    "item_quantity": 1,
+    "item_price": 7440,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "TrinketChitinSwim",
+    "item_quantity": 1,
+    "item_price": 4860,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "TrinketFlametalEitr",
+    "item_quantity": 1,
+    "item_price": 17664,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "TrinketFlametalStaminaHealth",
+    "item_quantity": 1,
+    "item_price": 8832,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "TrinketIronHealth",
+    "item_quantity": 1,
+    "item_price": 1076,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "TrinketIronStamina",
+    "item_quantity": 1,
+    "item_price": 1198,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "TrinketScaleStaminaDamage",
+    "item_quantity": 1,
+    "item_price": 8480,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "TrinketSilverDamage",
+    "item_quantity": 1,
+    "item_price": 1584,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "TrinketSilverResist",
+    "item_quantity": 1,
+    "item_price": 1794,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "TrollHide",
+    "item_quantity": 20,
+    "item_price": 48,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "TrophyAbomination",
+    "item_quantity": 1,
+    "item_price": 643,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "TrophyAsksvin",
+    "item_quantity": 1,
+    "item_price": 4896,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "TrophyBjorn",
+    "item_quantity": 1,
+    "item_price": 1404,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "TrophyBjornUndead",
+    "item_quantity": 1,
+    "item_price": 1620,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "TrophyBlob",
+    "item_quantity": 1,
+    "item_price": 121,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "TrophyBoar",
+    "item_quantity": 1,
+    "item_price": 33,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "TrophyBonemawSerpent",
+    "item_quantity": 1,
+    "item_price": 5824,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "TrophyCharredArcher",
+    "item_quantity": 1,
+    "item_price": 2448,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "TrophyCharredMage",
+    "item_quantity": 1,
+    "item_price": 2880,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "TrophyCharredMelee",
+    "item_quantity": 1,
+    "item_price": 2304,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "TrophyCultist",
+    "item_quantity": 1,
+    "item_price": 438,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "TrophyDeathsquito",
+    "item_quantity": 1,
+    "item_price": 648,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "TrophyDeer",
+    "item_quantity": 1,
+    "item_price": 40,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "TrophyDraugr",
+    "item_quantity": 1,
+    "item_price": 141,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "TrophyDraugrElite",
+    "item_quantity": 1,
+    "item_price": 409,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "TrophyDraugrFem",
+    "item_quantity": 1,
+    "item_price": 141,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "TrophyDvergr",
+    "item_quantity": 1,
+    "item_price": 1800,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "TrophyFallenValkyrie",
+    "item_quantity": 1,
+    "item_price": 8320,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "TrophyFenring",
+    "item_quantity": 1,
+    "item_price": 540,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "TrophyForestTroll",
+    "item_quantity": 1,
+    "item_price": 286,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "TrophyFrostTroll",
+    "item_quantity": 1,
+    "item_price": 877,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "TrophyGhost",
+    "item_quantity": 1,
+    "item_price": 222,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "TrophyGjall",
+    "item_quantity": 1,
+    "item_price": 3640,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "TrophyGoblin",
+    "item_quantity": 1,
+    "item_price": 594,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "TrophyGoblinBrute",
+    "item_quantity": 1,
+    "item_price": 1716,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "TrophyGoblinShaman",
+    "item_quantity": 1,
+    "item_price": 1560,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "TrophyGreydwarf",
+    "item_quantity": 1,
+    "item_price": 49,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "TrophyGreydwarfBrute",
+    "item_quantity": 1,
+    "item_price": 160,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "TrophyGreydwarfShaman",
+    "item_quantity": 1,
+    "item_price": 143,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "TrophyGrowth",
+    "item_quantity": 1,
+    "item_price": 2184,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "TrophyHare",
+    "item_quantity": 1,
+    "item_price": 337,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "TrophyHatchling",
+    "item_quantity": 1,
+    "item_price": 405,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "TrophyLeech",
+    "item_quantity": 1,
+    "item_price": 121,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "TrophyLox",
+    "item_quantity": 1,
+    "item_price": 2340,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "TrophyMorgen",
+    "item_quantity": 1,
+    "item_price": 6864,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "TrophyNeck",
+    "item_quantity": 1,
+    "item_price": 27,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "TrophySeeker",
+    "item_quantity": 1,
+    "item_price": 1170,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "TrophySeekerBrute",
+    "item_quantity": 1,
+    "item_price": 2860,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "TrophySerpent",
+    "item_quantity": 1,
+    "item_price": 1121,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "TrophySGolem",
+    "item_quantity": 1,
+    "item_price": 1267,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "TrophySkeleton",
+    "item_quantity": 1,
+    "item_price": 61,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "TrophySkeletonPoison",
+    "item_quantity": 1,
+    "item_price": 111,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "TrophySurtling",
+    "item_quantity": 1,
+    "item_price": 182,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "TrophyTick",
+    "item_quantity": 1,
+    "item_price": 990,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "TrophyUlv",
+    "item_quantity": 1,
+    "item_price": 472,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "TrophyVolture",
+    "item_quantity": 1,
+    "item_price": 3456,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "TrophyWolf",
+    "item_quantity": 1,
+    "item_price": 303,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "TrophyWraith",
+    "item_quantity": 1,
+    "item_price": 263,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "Turnip",
+    "item_quantity": 1,
+    "item_price": 16,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "TurnipSeeds",
+    "item_quantity": 20,
+    "item_price": 6,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "TurnipStew",
+    "item_quantity": 1,
+    "item_price": 297,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "TurretBolt",
+    "item_quantity": 1,
+    "item_price": 96,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "TurretBoltFlametal",
+    "item_quantity": 1,
+    "item_price": 307,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "TurretBoltWood",
+    "item_quantity": 1,
+    "item_price": 22,
+    "must_defeated_boss": "defeated_eikthyr"
+  },
+  {
+    "item_prefab": "VoltureEgg",
+    "item_quantity": 10,
+    "item_price": 2160,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "VoltureMeat",
+    "item_quantity": 1,
+    "item_price": 716,
+    "must_defeated_boss": "defeated_queen"
+  },
+  {
+    "item_prefab": "Wishbone",
+    "item_quantity": 1,
+    "item_price": 3375,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "Wisp",
+    "item_quantity": 20,
+    "item_price": 1350,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "WitheredBone",
+    "item_quantity": 20,
+    "item_price": 74,
+    "must_defeated_boss": "defeated_gdking"
+  },
+  {
+    "item_prefab": "WolfClaw",
+    "item_quantity": 20,
+    "item_price": 144,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "WolfFang",
+    "item_quantity": 20,
+    "item_price": 84,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "WolfJerky",
+    "item_quantity": 1,
+    "item_price": 540,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "WolfMeat",
+    "item_quantity": 1,
+    "item_price": 105,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "WolfMeatSkewer",
+    "item_quantity": 1,
+    "item_price": 210,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "WolfPelt",
+    "item_quantity": 20,
+    "item_price": 108,
+    "must_defeated_boss": "defeated_bonemass"
+  },
+  {
+    "item_prefab": "Wood",
+    "item_quantity": 20,
+    "item_price": 5,
+    "must_defeated_boss": ""
+  },
+  {
+    "item_prefab": "YagluthDrop",
+    "item_quantity": 1,
+    "item_price": 15000,
+    "must_defeated_boss": "defeated_dragon"
+  },
+  {
+    "item_prefab": "YggdrasilPorridge",
+    "item_quantity": 1,
+    "item_price": 5700,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "YggdrasilWood",
+    "item_quantity": 20,
+    "item_price": 512,
+    "must_defeated_boss": "defeated_goblinking"
+  },
+  {
+    "item_prefab": "YmirRemains",
+    "item_quantity": 5,
+    "item_price": 1296,
+    "must_defeated_boss": "defeated_bonemass"
+  }
+]
