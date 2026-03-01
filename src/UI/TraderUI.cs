@@ -30,8 +30,19 @@ namespace TraderOverhaul
         // ── Categories ──
         private readonly Dictionary<string, bool> _buyCategoryCollapsed = new Dictionary<string, bool>();
         private readonly Dictionary<string, bool> _sellCategoryCollapsed = new Dictionary<string, bool>();
+        private readonly Dictionary<string, bool> _buyRarityCollapsed = new Dictionary<string, bool>();
+        private readonly Dictionary<string, bool> _sellRarityCollapsed = new Dictionary<string, bool>();
         private static readonly string[] CategoryBuckets =
             { "Weapons", "Armor", "Shields", "Ammo", "Consumables", "Materials", "Utility", "Trophies", "Misc" };
+        private static readonly string[] RarityOrder = { "", "Magic", "Rare", "Epic", "Legendary", "Mythic" };
+        private static readonly Dictionary<string, string> RarityDisplayNames = new Dictionary<string, string>
+        {
+            { "", "Base" }, { "Magic", "Magic" }, { "Rare", "Rare" },
+            { "Epic", "Epic" }, { "Legendary", "Legendary" }, { "Mythic", "Mythic" }
+        };
+
+        // ── Tooltip cache for rarity items (so effects stay consistent while trader is open) ──
+        private readonly Dictionary<string, string> _rarityTooltipCache = new Dictionary<string, string>();
 
         // ── Search ──
         private string _searchFilter = "";
@@ -42,6 +53,7 @@ namespace TraderOverhaul
         private readonly List<Button> _categoryFilterButtons = new List<Button>();
         private readonly List<string> _categoryFilterKeys = new List<string>();
         private int _joyCategoryFocusIndex = -1; // controller hover index (-1 = none)
+        private int _lastJoyCategoryFocusIndex = -1; // remembered position when leaving categories
 
         // ── UI root ──
         private GameObject _canvasGO;
@@ -168,6 +180,7 @@ namespace TraderOverhaul
             public int Stack;
             public string Category;
             public Sprite Icon;
+            public string Rarity = "";
         }
 
         private class SellEntry
@@ -179,6 +192,7 @@ namespace TraderOverhaul
             public int ConfigStack;
             public string Category;
             public Sprite Icon;
+            public string Rarity = "";
         }
 
         // ══════════════════════════════════════════
@@ -207,10 +221,14 @@ namespace TraderOverhaul
             if (_searchInput != null) _searchInput.text = "";
             _activeCategoryFilter = null;
             _joyCategoryFocusIndex = -1;
+            _lastJoyCategoryFocusIndex = -1;
             _lastInventoryHash = 0;
             _lastCoinDisplayCount = -1;
             _lastBankBalanceDisplay = -1;
             _lastBankInvCoinsDisplay = -1;
+            _buyRarityCollapsed.Clear();
+            _sellRarityCollapsed.Clear();
+            _rarityTooltipCache.Clear();
 
             SetupPlayerPreview();
             SetupTraderPreview();
@@ -361,6 +379,7 @@ namespace TraderOverhaul
             // Up/down — navigate item list; also clears category button focus
             if (ZInput.GetButtonDown("JoyLStickDown") || ZInput.GetButtonDown("JoyDPadDown"))
             {
+                if (_joyCategoryFocusIndex >= 0) _lastJoyCategoryFocusIndex = _joyCategoryFocusIndex;
                 _joyCategoryFocusIndex = -1;
                 UpdateCategoryFilterVisuals();
                 MoveSelection(1);
@@ -368,9 +387,23 @@ namespace TraderOverhaul
             }
             if (ZInput.GetButtonDown("JoyLStickUp") || ZInput.GetButtonDown("JoyDPadUp"))
             {
-                _joyCategoryFocusIndex = -1;
-                UpdateCategoryFilterVisuals();
-                MoveSelection(-1);
+                bool atTop = (_activeTab == 0 && _selectedBuyIndex <= 0) ||
+                             (_activeTab == 1 && _selectedSellIndex <= 0);
+                if (atTop && _joyCategoryFocusIndex < 0 && _categoryFilterButtons.Count > 0)
+                {
+                    // Return to category buttons from top of item list
+                    _joyCategoryFocusIndex = _lastJoyCategoryFocusIndex >= 0
+                        ? Mathf.Min(_lastJoyCategoryFocusIndex, _categoryFilterButtons.Count - 1)
+                        : 0;
+                    UpdateCategoryFilterVisuals();
+                }
+                else
+                {
+                    if (_joyCategoryFocusIndex >= 0) _lastJoyCategoryFocusIndex = _joyCategoryFocusIndex;
+                    _joyCategoryFocusIndex = -1;
+                    UpdateCategoryFilterVisuals();
+                    MoveSelection(-1);
+                }
                 if (EventSystem.current != null) EventSystem.current.SetSelectedGameObject(null);
             }
 
@@ -392,6 +425,7 @@ namespace TraderOverhaul
                 if (_joyCategoryFocusIndex >= 0 && _joyCategoryFocusIndex < _categoryFilterKeys.Count)
                 {
                     OnCategoryFilterClicked(_categoryFilterKeys[_joyCategoryFocusIndex]);
+                    _lastJoyCategoryFocusIndex = _joyCategoryFocusIndex;
                     _joyCategoryFocusIndex = -1;
                     UpdateCategoryFilterVisuals();
                 }
@@ -429,7 +463,13 @@ namespace TraderOverhaul
         {
             if (_categoryFilterButtons.Count == 0) return;
             if (_joyCategoryFocusIndex < 0)
-                _joyCategoryFocusIndex = dir > 0 ? 0 : _categoryFilterButtons.Count - 1;
+            {
+                // Restore last known position, then nudge in the pressed direction
+                if (_lastJoyCategoryFocusIndex >= 0)
+                    _joyCategoryFocusIndex = Mathf.Clamp(_lastJoyCategoryFocusIndex, 0, _categoryFilterButtons.Count - 1);
+                else
+                    _joyCategoryFocusIndex = dir > 0 ? 0 : _categoryFilterButtons.Count - 1;
+            }
             else
                 _joyCategoryFocusIndex = Mathf.Clamp(_joyCategoryFocusIndex + dir, 0, _categoryFilterButtons.Count - 1);
             UpdateCategoryFilterVisuals();
@@ -465,14 +505,23 @@ namespace TraderOverhaul
 
         private void ToggleFocusedCategory()
         {
-            // Find the category of the currently selected item and toggle it
+            // If the selected item has a rarity, toggle its rarity sub-group.
+            // Otherwise toggle the parent category header.
             if (_activeTab == 0 && _selectedBuyIndex >= 0)
             {
                 var entries = GetFilteredBuyEntries();
                 if (_selectedBuyIndex < entries.Count)
                 {
-                    string cat = entries[_selectedBuyIndex].Category;
-                    _buyCategoryCollapsed[cat] = !(_buyCategoryCollapsed.TryGetValue(cat, out bool c) && c);
+                    var entry = entries[_selectedBuyIndex];
+                    if (!string.IsNullOrEmpty(entry.Rarity))
+                    {
+                        string key = entry.Category + "|" + entry.Rarity;
+                        _buyRarityCollapsed[key] = !(_buyRarityCollapsed.TryGetValue(key, out bool rv) && rv);
+                    }
+                    else
+                    {
+                        _buyCategoryCollapsed[entry.Category] = !(_buyCategoryCollapsed.TryGetValue(entry.Category, out bool c) && c);
+                    }
                     PopulateCurrentList();
                 }
             }
@@ -481,8 +530,16 @@ namespace TraderOverhaul
                 var entries = GetFilteredSellEntries();
                 if (_selectedSellIndex < entries.Count)
                 {
-                    string cat = entries[_selectedSellIndex].Category;
-                    _sellCategoryCollapsed[cat] = !(_sellCategoryCollapsed.TryGetValue(cat, out bool c) && c);
+                    var entry = entries[_selectedSellIndex];
+                    if (!string.IsNullOrEmpty(entry.Rarity))
+                    {
+                        string key = entry.Category + "|" + entry.Rarity;
+                        _sellRarityCollapsed[key] = !(_sellRarityCollapsed.TryGetValue(key, out bool rv) && rv);
+                    }
+                    else
+                    {
+                        _sellCategoryCollapsed[entry.Category] = !(_sellCategoryCollapsed.TryGetValue(entry.Category, out bool c) && c);
+                    }
                     PopulateCurrentList();
                 }
             }
@@ -770,6 +827,10 @@ namespace TraderOverhaul
             _searchInput.pointSize = 16f;
             _searchInput.characterLimit = 50;
             _searchInput.onValueChanged.AddListener(OnSearchChanged);
+
+            // Hover effect on search background
+            Color searchBaseColor = _textFieldSprite != null ? Color.white : new Color(0.12f, 0.08f, 0.04f, 0.9f);
+            AddHoverEffect(bg, searchBaseColor, 0.1f);
         }
 
         private void BuildCategoryFilterRow()
@@ -998,6 +1059,17 @@ namespace TraderOverhaul
                     _actionButton.onClick.AddListener(OnActionButtonClicked);
                     _actionButton.interactable = false;
                     _actionButton.navigation = new Navigation { mode = Navigation.Mode.None };
+                    _actionButton.transition = Selectable.Transition.ColorTint;
+                    _actionButton.colors = new ColorBlock
+                    {
+                        normalColor = Color.white,
+                        highlightedColor = new Color(1f, 0.9f, 0.7f, 1f),
+                        pressedColor = new Color(0.85f, 0.75f, 0.55f, 1f),
+                        selectedColor = Color.white,
+                        disabledColor = new Color(0.6f, 0.6f, 0.6f, 1f),
+                        colorMultiplier = 1f,
+                        fadeDuration = 0.1f
+                    };
                 }
                 _actionButtonLabel = btnGO.GetComponentInChildren<TMP_Text>(true);
                 if (_actionButtonLabel != null)
@@ -1212,6 +1284,31 @@ namespace TraderOverhaul
             tabRT.pivot = new Vector2(0.5f, 1f);
             tabRT.sizeDelta = new Vector2(width, _tabBtnHeight);
             tabRT.anchoredPosition = new Vector2(centerX, -topGap);
+
+            // Hover effect: brighten current color on enter, restore via RefreshTabHighlights on exit
+            var tabImg = go.GetComponent<Image>();
+            if (tabImg != null)
+            {
+                var trigger = go.GetComponent<EventTrigger>() ?? go.AddComponent<EventTrigger>();
+                trigger.triggers.Clear();
+                var enterEntry = new EventTrigger.Entry { eventID = EventTriggerType.PointerEnter };
+                enterEntry.callback.AddListener((_) =>
+                {
+                    if (tabImg != null)
+                    {
+                        Color c = tabImg.color;
+                        tabImg.color = new Color(
+                            Mathf.Min(c.r + 0.15f, 1f),
+                            Mathf.Min(c.g + 0.15f, 1f),
+                            Mathf.Min(c.b + 0.15f, 1f), c.a);
+                    }
+                });
+                trigger.triggers.Add(enterEntry);
+                var exitEntry = new EventTrigger.Entry { eventID = EventTriggerType.PointerExit };
+                exitEntry.callback.AddListener((_) => { RefreshTabHighlights(); });
+                trigger.triggers.Add(exitEntry);
+            }
+
             return go;
         }
 
@@ -1234,6 +1331,37 @@ namespace TraderOverhaul
             foreach (var c in go.GetComponents<LayoutElement>()) DestroyImmediate(c);
         }
 
+        /// <summary>
+        /// Replaces any vanilla EventTrigger entries with PointerEnter/Exit hover effect
+        /// that brightens the element's background Image color.
+        /// </summary>
+        private static void AddHoverEffect(GameObject go, Color baseColor, float brighten = 0.15f)
+        {
+            var img = go.GetComponent<Image>();
+            if (img == null) return;
+
+            var trigger = go.GetComponent<EventTrigger>();
+            if (trigger != null)
+                trigger.triggers.Clear();
+            else
+                trigger = go.AddComponent<EventTrigger>();
+
+            Color hoverColor = new Color(
+                Mathf.Min(baseColor.r + brighten, 1f),
+                Mathf.Min(baseColor.g + brighten, 1f),
+                Mathf.Min(baseColor.b + brighten, 1f),
+                Mathf.Min(baseColor.a + 0.08f, 1f)
+            );
+
+            var enterEntry = new EventTrigger.Entry { eventID = EventTriggerType.PointerEnter };
+            enterEntry.callback.AddListener((_) => { if (img != null) img.color = hoverColor; });
+            trigger.triggers.Add(enterEntry);
+
+            var exitEntry = new EventTrigger.Entry { eventID = EventTriggerType.PointerExit };
+            exitEntry.callback.AddListener((_) => { if (img != null) img.color = baseColor; });
+            trigger.triggers.Add(exitEntry);
+        }
+
         // ══════════════════════════════════════════
         //  TAB MANAGEMENT
         // ══════════════════════════════════════════
@@ -1247,6 +1375,9 @@ namespace TraderOverhaul
             if (_searchInput != null) _searchInput.text = "";
             _activeCategoryFilter = null;
             _joyCategoryFocusIndex = -1;
+            _lastJoyCategoryFocusIndex = -1;
+            _buyRarityCollapsed.Clear();
+            _sellRarityCollapsed.Clear();
             UpdateCategoryFilterVisuals();
             RefreshTabHighlights();
             RefreshTabPanels();
@@ -1342,7 +1473,8 @@ namespace TraderOverhaul
                     Price = Mathf.Max(0, entry.price),
                     Stack = Mathf.Max(1, entry.stack),
                     Category = GetItemCategory(drop.m_itemData),
-                    Icon = icon
+                    Icon = icon,
+                    Rarity = entry.rarity ?? ""
                 }, overwriteExisting: true);
             }
         }
@@ -1385,7 +1517,8 @@ namespace TraderOverhaul
             if (entry == null || string.IsNullOrEmpty(entry.PrefabName)) return;
 
             int idx = _allBuyEntries.FindIndex(e =>
-                string.Equals(e.PrefabName, entry.PrefabName, StringComparison.OrdinalIgnoreCase));
+                string.Equals(e.PrefabName, entry.PrefabName, StringComparison.OrdinalIgnoreCase) &&
+                string.Equals(e.Rarity ?? "", entry.Rarity ?? "", StringComparison.OrdinalIgnoreCase));
 
             if (idx < 0)
             {
@@ -1408,10 +1541,23 @@ namespace TraderOverhaul
             if (inv == null) return;
 
             string coinName = _currentStoreGui?.m_coinPrefab?.m_itemData?.m_shared?.m_name;
-            var sellByPrefab = ConfigLoader.GetSellEntries()
+            var sellConfigs = ConfigLoader.GetSellEntries()
                 .Where(e => !string.IsNullOrEmpty(e.prefab))
-                .GroupBy(e => e.prefab, StringComparer.OrdinalIgnoreCase)
-                .ToDictionary(g => g.Key, g => g.First(), StringComparer.OrdinalIgnoreCase);
+                .GroupBy(e => (e.prefab.ToLowerInvariant(), (e.rarity ?? "").ToLowerInvariant()))
+                .Select(g => g.First())
+                .ToList();
+
+            // Build lookup: prefab → list of sell configs (one per rarity)
+            var sellByPrefab = new Dictionary<string, List<TradeEntry>>(StringComparer.OrdinalIgnoreCase);
+            foreach (var e in sellConfigs)
+            {
+                if (!sellByPrefab.TryGetValue(e.prefab, out var list))
+                {
+                    list = new List<TradeEntry>();
+                    sellByPrefab[e.prefab] = list;
+                }
+                list.Add(e);
+            }
 
             foreach (var item in inv.GetAllItems())
             {
@@ -1431,9 +1577,21 @@ namespace TraderOverhaul
                 }
 
                 if (string.IsNullOrEmpty(prefabName)) continue;
-                if (!sellByPrefab.TryGetValue(prefabName, out TradeEntry config)) continue;
+                if (!sellByPrefab.TryGetValue(prefabName, out var configs)) continue;
+
+                // Find the matching rarity config for this item
+                string itemRarity = GetItemRarity(item);
+                TradeEntry config = configs.Find(c =>
+                    string.Equals(c.rarity ?? "", itemRarity, StringComparison.OrdinalIgnoreCase))
+                    ?? configs.Find(c => string.IsNullOrEmpty(c.rarity));
+                if (config == null) continue;
                 if (item.m_stack < config.stack) continue;
                 if (config.price <= 0) continue;
+
+                // Use the item's actual rarity (detected from Epic Loot data) and scale price
+                int sellPrice = config.price;
+                if (!string.IsNullOrEmpty(itemRarity) && string.IsNullOrEmpty(config.rarity))
+                    sellPrice = (int)(config.price * GetRaritySellMultiplier(itemRarity));
 
                 string name = Localize(item.m_shared.m_name);
                 Sprite icon = null;
@@ -1444,10 +1602,11 @@ namespace TraderOverhaul
                     Item = item,
                     PrefabName = prefabName,
                     Name = name,
-                    Price = config.price,
+                    Price = sellPrice,
                     ConfigStack = config.stack,
                     Category = GetItemCategory(item),
-                    Icon = icon
+                    Icon = icon,
+                    Rarity = !string.IsNullOrEmpty(itemRarity) ? itemRarity : (config.rarity ?? "")
                 });
             }
 
@@ -1534,14 +1693,64 @@ namespace TraderOverhaul
 
                 if (searchActive || !collapsed)
                 {
-                    foreach (int idx in indices)
+                    // Check if this category has any rarity items
+                    bool hasRarityItems = false;
+                    for (int k = 0; k < indices.Count; k++)
                     {
-                        var entry = entries[idx];
-                        var element = CreateBuyListEntry(entry, idx, visualIndex, rowH, spacing);
-                        if (element != null)
+                        if (!string.IsNullOrEmpty(entries[indices[k]].Rarity)) { hasRarityItems = true; break; }
+                    }
+
+                    if (hasRarityItems && !searchActive)
+                    {
+                        // Sub-group by rarity
+                        var byRarity = new Dictionary<string, List<int>>();
+                        foreach (int idx in indices)
                         {
-                            _listElements.Add((element, idx));
-                            visualIndex++;
+                            string r = entries[idx].Rarity ?? "";
+                            if (!byRarity.ContainsKey(r)) byRarity[r] = new List<int>();
+                            byRarity[r].Add(idx);
+                        }
+
+                        foreach (string rarity in RarityOrder)
+                        {
+                            if (!byRarity.ContainsKey(rarity)) continue;
+                            var rarityIndices = byRarity[rarity];
+
+                            string collapseKey = cat + "|" + rarity;
+                            bool rarityCollapsed = _buyRarityCollapsed.TryGetValue(collapseKey, out bool rc) && rc;
+
+                            var subHeader = CreateRaritySubHeader(cat, rarity, rarityCollapsed, false, visualIndex, spacing);
+                            if (subHeader != null)
+                            {
+                                _categoryHeaders.Add(subHeader);
+                                visualIndex++;
+                            }
+
+                            if (!rarityCollapsed)
+                            {
+                                foreach (int idx in rarityIndices)
+                                {
+                                    var element = CreateBuyListEntry(entries[idx], idx, visualIndex, rowH, spacing);
+                                    if (element != null)
+                                    {
+                                        _listElements.Add((element, idx));
+                                        visualIndex++;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        // Flat list (no rarity items or searching)
+                        foreach (int idx in indices)
+                        {
+                            var element = CreateBuyListEntry(entries[idx], idx, visualIndex, rowH, spacing);
+                            if (element != null)
+                            {
+                                _listElements.Add((element, idx));
+                                visualIndex++;
+                            }
                         }
                     }
                 }
@@ -1595,14 +1804,61 @@ namespace TraderOverhaul
 
                 if (searchActive || !collapsed)
                 {
-                    foreach (int idx in indices)
+                    bool hasRarityItems = false;
+                    for (int k = 0; k < indices.Count; k++)
                     {
-                        var entry = entries[idx];
-                        var element = CreateSellListEntry(entry, idx, visualIndex, rowH, spacing);
-                        if (element != null)
+                        if (!string.IsNullOrEmpty(entries[indices[k]].Rarity)) { hasRarityItems = true; break; }
+                    }
+
+                    if (hasRarityItems && !searchActive)
+                    {
+                        var byRarity = new Dictionary<string, List<int>>();
+                        foreach (int idx in indices)
                         {
-                            _listElements.Add((element, idx));
-                            visualIndex++;
+                            string r = entries[idx].Rarity ?? "";
+                            if (!byRarity.ContainsKey(r)) byRarity[r] = new List<int>();
+                            byRarity[r].Add(idx);
+                        }
+
+                        foreach (string rarity in RarityOrder)
+                        {
+                            if (!byRarity.ContainsKey(rarity)) continue;
+                            var rarityIndices = byRarity[rarity];
+
+                            string collapseKey = cat + "|" + rarity;
+                            bool rarityCollapsed = _sellRarityCollapsed.TryGetValue(collapseKey, out bool rc) && rc;
+
+                            var subHeader = CreateRaritySubHeader(cat, rarity, rarityCollapsed, true, visualIndex, spacing);
+                            if (subHeader != null)
+                            {
+                                _categoryHeaders.Add(subHeader);
+                                visualIndex++;
+                            }
+
+                            if (!rarityCollapsed)
+                            {
+                                foreach (int idx in rarityIndices)
+                                {
+                                    var element = CreateSellListEntry(entries[idx], idx, visualIndex, rowH, spacing);
+                                    if (element != null)
+                                    {
+                                        _listElements.Add((element, idx));
+                                        visualIndex++;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        foreach (int idx in indices)
+                        {
+                            var element = CreateSellListEntry(entries[idx], idx, visualIndex, rowH, spacing);
+                            if (element != null)
+                            {
+                                _listElements.Add((element, idx));
+                                visualIndex++;
+                            }
                         }
                     }
                 }
@@ -1619,9 +1875,6 @@ namespace TraderOverhaul
             element.SetActive(true);
             element.name = "BuyItem_" + entry.PrefabName;
 
-            var trigger = element.GetComponent<EventTrigger>();
-            if (trigger != null) DestroyImmediate(trigger);
-
             var elemRT = element.transform as RectTransform;
             StripLayoutComponents(element);
             elemRT.anchorMin = new Vector2(0f, 1f);
@@ -1630,8 +1883,13 @@ namespace TraderOverhaul
             elemRT.anchoredPosition = new Vector2(0f, visualIndex * -spacing);
             elemRT.sizeDelta = new Vector2(0f, rowH);
 
+            Color bgColor = new Color(0f, 0f, 0f, 0.25f);
+
             var elemImg = element.GetComponent<Image>();
-            if (elemImg != null) elemImg.color = new Color(0f, 0f, 0f, 0.25f);
+            if (elemImg != null)
+                elemImg.color = bgColor;
+
+            AddHoverEffect(element, bgColor);
 
             // Icon
             var iconTr = element.transform.Find("icon");
@@ -1642,6 +1900,25 @@ namespace TraderOverhaul
                     var iconImg = iconTr.GetComponent<Image>();
                     if (iconImg != null) { iconImg.sprite = entry.Icon; iconImg.color = Color.white; iconImg.preserveAspect = true; }
                     iconTr.gameObject.SetActive(true);
+
+                    // Rarity color background behind icon — parented to row, placed before icon in sibling order
+                    if (!string.IsNullOrEmpty(entry.Rarity) && ColorUtility.TryParseHtmlString(GetRarityHexColor(entry.Rarity), out Color iconBgColor))
+                    {
+                        var iconBgGO = new GameObject("rarityBg", typeof(RectTransform), typeof(Image));
+                        iconBgGO.transform.SetParent(element.transform, false);
+                        int iconSibIdx = iconTr.GetSiblingIndex();
+                        iconBgGO.transform.SetSiblingIndex(iconSibIdx);
+                        var iconRT = iconTr as RectTransform;
+                        var iconBgRT = iconBgGO.GetComponent<RectTransform>();
+                        iconBgRT.anchorMin = iconRT.anchorMin;
+                        iconBgRT.anchorMax = iconRT.anchorMax;
+                        iconBgRT.pivot = iconRT.pivot;
+                        iconBgRT.anchoredPosition = iconRT.anchoredPosition;
+                        iconBgRT.sizeDelta = iconRT.sizeDelta + new Vector2(4f, 4f);
+                        var iconBgImg = iconBgGO.GetComponent<Image>();
+                        iconBgColor.a = 0.55f;
+                        iconBgImg.color = iconBgColor;
+                    }
                 }
                 else iconTr.gameObject.SetActive(false);
             }
@@ -1663,7 +1940,10 @@ namespace TraderOverhaul
                 {
                     string text = entry.Name;
                     if (entry.Stack > 1) text += $" x{entry.Stack}";
+                    if (!string.IsNullOrEmpty(entry.Rarity))
+                        text += $" <size=14><color={GetRarityHexColor(entry.Rarity)}>({entry.Rarity})</color></size>";
                     nameTxt.text = text;
+                    nameTxt.richText = true;
                     nameTxt.color = Color.white;
                     nameTxt.fontSize = 19f;
                     nameTxt.alignment = TextAlignmentOptions.MidlineLeft;
@@ -1679,7 +1959,7 @@ namespace TraderOverhaul
             var priceTxt = priceGO.AddComponent<TextMeshProUGUI>();
             var buyPriceFont = _valheimFont ?? element.transform.Find("name")?.GetComponent<TMP_Text>()?.font;
             if (buyPriceFont != null) priceTxt.font = buyPriceFont;
-            priceTxt.text = entry.Price.ToString();
+            priceTxt.text = entry.Price.ToString("N0");
             priceTxt.fontSize = 19f;
             priceTxt.color = GoldTextColor;
             priceTxt.alignment = TextAlignmentOptions.MidlineRight;
@@ -1728,9 +2008,6 @@ namespace TraderOverhaul
             element.SetActive(true);
             element.name = "SellItem_" + entry.PrefabName;
 
-            var trigger = element.GetComponent<EventTrigger>();
-            if (trigger != null) DestroyImmediate(trigger);
-
             var elemRT = element.transform as RectTransform;
             StripLayoutComponents(element);
             elemRT.anchorMin = new Vector2(0f, 1f);
@@ -1739,8 +2016,13 @@ namespace TraderOverhaul
             elemRT.anchoredPosition = new Vector2(0f, visualIndex * -spacing);
             elemRT.sizeDelta = new Vector2(0f, rowH);
 
+            Color bgColor = new Color(0f, 0f, 0f, 0.25f);
+
             var elemImg = element.GetComponent<Image>();
-            if (elemImg != null) elemImg.color = new Color(0f, 0f, 0f, 0.25f);
+            if (elemImg != null)
+                elemImg.color = bgColor;
+
+            AddHoverEffect(element, bgColor);
 
             var iconTr = element.transform.Find("icon");
             if (iconTr != null)
@@ -1750,6 +2032,25 @@ namespace TraderOverhaul
                     var iconImg = iconTr.GetComponent<Image>();
                     if (iconImg != null) { iconImg.sprite = entry.Icon; iconImg.color = Color.white; iconImg.preserveAspect = true; }
                     iconTr.gameObject.SetActive(true);
+
+                    // Rarity color background behind icon — parented to row, placed before icon in sibling order
+                    if (!string.IsNullOrEmpty(entry.Rarity) && ColorUtility.TryParseHtmlString(GetRarityHexColor(entry.Rarity), out Color iconBgColor))
+                    {
+                        var iconBgGO = new GameObject("rarityBg", typeof(RectTransform), typeof(Image));
+                        iconBgGO.transform.SetParent(element.transform, false);
+                        int iconSibIdx = iconTr.GetSiblingIndex();
+                        iconBgGO.transform.SetSiblingIndex(iconSibIdx);
+                        var iconRT = iconTr as RectTransform;
+                        var iconBgRT = iconBgGO.GetComponent<RectTransform>();
+                        iconBgRT.anchorMin = iconRT.anchorMin;
+                        iconBgRT.anchorMax = iconRT.anchorMax;
+                        iconBgRT.pivot = iconRT.pivot;
+                        iconBgRT.anchoredPosition = iconRT.anchoredPosition;
+                        iconBgRT.sizeDelta = iconRT.sizeDelta + new Vector2(4f, 4f);
+                        var iconBgImg = iconBgGO.GetComponent<Image>();
+                        iconBgColor.a = 0.55f;
+                        iconBgImg.color = iconBgColor;
+                    }
                 }
                 else iconTr.gameObject.SetActive(false);
             }
@@ -1770,7 +2071,10 @@ namespace TraderOverhaul
                 {
                     string text = entry.Name;
                     if (entry.ConfigStack > 1) text += $" x{entry.ConfigStack}";
+                    if (!string.IsNullOrEmpty(entry.Rarity))
+                        text += $" <size=14><color={GetRarityHexColor(entry.Rarity)}>({entry.Rarity})</color></size>";
                     nameTxt.text = text;
+                    nameTxt.richText = true;
                     nameTxt.color = Color.white;
                     nameTxt.fontSize = 19f;
                     nameTxt.alignment = TextAlignmentOptions.MidlineLeft;
@@ -1832,9 +2136,6 @@ namespace TraderOverhaul
             header.SetActive(true);
             header.name = (isSell ? "SellCat_" : "BuyCat_") + category;
 
-            var trigger = header.GetComponent<EventTrigger>();
-            if (trigger != null) DestroyImmediate(trigger);
-
             var hRT = header.transform as RectTransform;
             StripLayoutComponents(header);
             hRT.anchorMin = new Vector2(0f, 1f);
@@ -1845,6 +2146,7 @@ namespace TraderOverhaul
 
             var bgImg = header.GetComponent<Image>();
             if (bgImg != null) bgImg.color = CategoryHeaderBg;
+            AddHoverEffect(header, CategoryHeaderBg);
 
             // Hide icon
             var iconTr = header.transform.Find("icon");
@@ -1900,6 +2202,97 @@ namespace TraderOverhaul
                         _selectedBuyIndex = -1;
                     }
                     // Don't auto-select item 0 after toggling a category — leave selection empty
+                    PopulateCurrentList(autoSelect: false);
+                });
+                btn.navigation = new Navigation { mode = Navigation.Mode.None };
+            }
+
+            return header;
+        }
+
+        private static readonly Color RaritySubHeaderBg = new Color(0.25f, 0.22f, 0.15f, 0.7f);
+
+        private GameObject CreateRaritySubHeader(string category, string rarity, bool collapsed, bool isSell, int visualIndex, float spacing)
+        {
+            if (_recipeElementPrefab == null || _listRoot == null) return null;
+
+            var header = Instantiate(_recipeElementPrefab, _listRoot);
+            header.SetActive(true);
+            header.name = (isSell ? "SellRar_" : "BuyRar_") + category + "_" + (rarity == "" ? "Base" : rarity);
+
+            var hRT = header.transform as RectTransform;
+            StripLayoutComponents(header);
+            hRT.anchorMin = new Vector2(0f, 1f);
+            hRT.anchorMax = new Vector2(1f, 1f);
+            hRT.pivot = new Vector2(0.5f, 1f);
+            hRT.anchoredPosition = new Vector2(0f, visualIndex * -spacing);
+            hRT.sizeDelta = new Vector2(0f, spacing - 2f);
+
+            var bgImg = header.GetComponent<Image>();
+            if (bgImg != null) bgImg.color = RaritySubHeaderBg;
+            AddHoverEffect(header, RaritySubHeaderBg);
+
+            var iconTr = header.transform.Find("icon");
+            if (iconTr != null) iconTr.gameObject.SetActive(false);
+
+            var nameTr = header.transform.Find("name");
+            if (nameTr != null)
+            {
+                var nameRT = nameTr as RectTransform;
+                if (nameRT != null)
+                {
+                    nameRT.anchorMin = Vector2.zero;
+                    nameRT.anchorMax = Vector2.one;
+                    nameRT.offsetMin = new Vector2(20f, 0f);
+                    nameRT.offsetMax = new Vector2(-10f, 0f);
+                }
+                var nameTxt = nameTr.GetComponent<TMP_Text>();
+                if (nameTxt != null)
+                {
+                    string displayName = RarityDisplayNames.TryGetValue(rarity, out string dn) ? dn : rarity;
+                    string arrow = collapsed ? ">" : "v";
+                    if (string.IsNullOrEmpty(rarity))
+                    {
+                        nameTxt.text = $"{arrow}  {displayName}";
+                        nameTxt.color = new Color(0.85f, 0.8f, 0.65f, 1f);
+                    }
+                    else
+                    {
+                        string hexColor = GetRarityHexColor(rarity);
+                        nameTxt.text = $"{arrow}  <color={hexColor}>{displayName}</color>";
+                        nameTxt.richText = true;
+                        nameTxt.color = Color.white;
+                    }
+                    nameTxt.fontStyle = FontStyles.Bold;
+                    nameTxt.fontSize = 16f;
+                    nameTxt.alignment = TextAlignmentOptions.MidlineLeft;
+                }
+            }
+
+            var durTr = header.transform.Find("Durability");
+            if (durTr != null) durTr.gameObject.SetActive(false);
+            var qualTr = header.transform.Find("QualityLevel");
+            if (qualTr != null) qualTr.gameObject.SetActive(false);
+            var selTr = header.transform.Find("selected");
+            if (selTr != null) selTr.gameObject.SetActive(false);
+
+            var btn = header.GetComponent<Button>();
+            if (btn != null)
+            {
+                btn.onClick.RemoveAllListeners();
+                string collapseKey = category + "|" + rarity;
+                btn.onClick.AddListener(() =>
+                {
+                    if (isSell)
+                    {
+                        _sellRarityCollapsed[collapseKey] = !(_sellRarityCollapsed.TryGetValue(collapseKey, out bool cv) && cv);
+                        _selectedSellIndex = -1;
+                    }
+                    else
+                    {
+                        _buyRarityCollapsed[collapseKey] = !(_buyRarityCollapsed.TryGetValue(collapseKey, out bool cv) && cv);
+                        _selectedBuyIndex = -1;
+                    }
                     PopulateCurrentList(autoSelect: false);
                 });
                 btn.navigation = new Navigation { mode = Navigation.Mode.None };
@@ -1965,7 +2358,14 @@ namespace TraderOverhaul
                 if (_selectedBuyIndex >= 0 && _selectedBuyIndex < entries.Count)
                 {
                     var e = entries[_selectedBuyIndex];
-                    if (_itemNameText != null) _itemNameText.text = e.Name;
+                    if (_itemNameText != null)
+                    {
+                        string nameText = e.Name;
+                        if (!string.IsNullOrEmpty(e.Rarity))
+                            nameText += $" <size=14><color={GetRarityHexColor(e.Rarity)}>({e.Rarity})</color></size>";
+                        _itemNameText.text = nameText;
+                        _itemNameText.richText = true;
+                    }
                     if (_itemDescText != null)
                     {
                         string tooltipText = e.Description;
@@ -1973,8 +2373,24 @@ namespace TraderOverhaul
                         var drop = prefab?.GetComponent<ItemDrop>();
                         if (drop?.m_itemData != null)
                         {
-                            string raw = ItemDrop.ItemData.GetTooltip(drop.m_itemData, 1, true, Game.m_worldLevel, e.Stack);
-                            tooltipText = Localize(raw);
+                            // For rarity items, create a temp enchanted item so Epic Loot's
+                            // tooltip patch can show the magic effects and modified stats.
+                            if (!string.IsNullOrEmpty(e.Rarity) && EpicLootIntegration.IsAvailable)
+                            {
+                                string cacheKey = e.PrefabName + "|" + e.Rarity;
+                                if (!_rarityTooltipCache.TryGetValue(cacheKey, out string cached))
+                                {
+                                    cached = GenerateRarityTooltip(prefab, e.Rarity, e.Stack);
+                                    if (cached != null)
+                                        _rarityTooltipCache[cacheKey] = cached;
+                                }
+                                tooltipText = cached ?? Localize(ItemDrop.ItemData.GetTooltip(drop.m_itemData, 1, false, Game.m_worldLevel, e.Stack));
+                            }
+                            else
+                            {
+                                string raw = ItemDrop.ItemData.GetTooltip(drop.m_itemData, 1, false, Game.m_worldLevel, e.Stack);
+                                tooltipText = Localize(raw);
+                            }
                         }
                         _itemDescText.text = tooltipText;
                         _itemDescText.ForceMeshUpdate();
@@ -2001,7 +2417,14 @@ namespace TraderOverhaul
                 if (_selectedSellIndex >= 0 && _selectedSellIndex < entries.Count)
                 {
                     var e = entries[_selectedSellIndex];
-                    if (_itemNameText != null) _itemNameText.text = e.Name;
+                    if (_itemNameText != null)
+                    {
+                        string nameText = e.Name;
+                        if (!string.IsNullOrEmpty(e.Rarity))
+                            nameText += $" <size=14><color={GetRarityHexColor(e.Rarity)}>({e.Rarity})</color></size>";
+                        _itemNameText.text = nameText;
+                        _itemNameText.richText = true;
+                    }
                     if (_itemDescText != null)
                     {
                         string tooltipText = Localize(e.Item?.m_shared?.m_description ?? "");
@@ -2071,10 +2494,22 @@ namespace TraderOverhaul
             _bankBalance -= entry.Price;
             SaveBankBalance();
 
-            var added = inv.AddItem(entry.PrefabName, entry.Stack, 1, 0, 0L, "");
+            bool hasRarity = !string.IsNullOrEmpty(entry.Rarity);
+            ItemDrop.ItemData added = null;
+
+            if (hasRarity)
+            {
+                // For rarity items, manually create the item so we can inject magic data
+                // BEFORE it enters the inventory (Epic Loot caches ItemInfo on AddItem).
+                added = CreateMagicItem(inv, entry.PrefabName, entry.Stack, entry.Rarity);
+            }
+            else
+            {
+                added = inv.AddItem(entry.PrefabName, entry.Stack, 1, 0, 0L, "");
+            }
+
             if (added == null)
             {
-                // Refund back to bank
                 _bankBalance += entry.Price;
                 SaveBankBalance();
                 ((Character)player).Message(MessageHud.MessageType.Center, "Inventory full!");
@@ -2084,12 +2519,105 @@ namespace TraderOverhaul
             if (_currentStoreGui.m_sellEffects != null)
                 _currentStoreGui.m_sellEffects.Create(_currentStoreGui.transform.position, Quaternion.identity);
 
-            string msg = entry.Stack > 1 ? $"Bought {entry.Stack} {entry.Name}" : $"Bought {entry.Name}";
+            string rarityTag = !string.IsNullOrEmpty(entry.Rarity) ? $" ({entry.Rarity})" : "";
+            string msg = entry.Stack > 1 ? $"Bought {entry.Stack} {entry.Name}{rarityTag}" : $"Bought {entry.Name}{rarityTag}";
             ((Character)player).Message(MessageHud.MessageType.TopLeft, $"{msg} for {entry.Price} coins", 0, entry.Icon);
 
             BuildSellEntries();
             UpdateCoinDisplay();
             RefreshDescription();
+        }
+
+        /// <summary>
+        /// Creates an item, applies Epic Loot magic data to its m_customData, then adds
+        /// it to the inventory. Magic data is written BEFORE AddItem so Epic Loot's
+        /// ItemInfo cache picks it up immediately.
+        /// </summary>
+        private static ItemDrop.ItemData CreateMagicItem(Inventory inv, string prefabName, int stack, string rarity)
+        {
+            GameObject prefab = ObjectDB.instance?.GetItemPrefab(prefabName);
+            if (prefab == null) return null;
+
+            ItemDrop.ItemData result = null;
+            int remaining = stack;
+
+            while (remaining > 0)
+            {
+                ZNetView.m_forceDisableInit = true;
+                GameObject tempObj = Instantiate(prefab);
+                ZNetView.m_forceDisableInit = false;
+
+                var drop = tempObj.GetComponent<ItemDrop>();
+                if (drop == null)
+                {
+                    Destroy(tempObj);
+                    return null;
+                }
+
+                int amount = Mathf.Min(remaining, drop.m_itemData.m_shared.m_maxStackSize);
+                remaining -= amount;
+                drop.m_itemData.m_stack = amount;
+                drop.SetQuality(1);
+                drop.m_itemData.m_variant = 0;
+                drop.m_itemData.m_durability = drop.m_itemData.GetMaxDurability();
+                drop.m_itemData.m_crafterID = 0L;
+                drop.m_itemData.m_crafterName = "";
+                drop.m_itemData.m_worldLevel = (byte)Game.m_worldLevel;
+                drop.m_itemData.m_pickedUp = false;
+
+                // Inject magic data BEFORE adding to inventory so Epic Loot sees it immediately
+                EpicLootIntegration.ApplyRarity(drop.m_itemData, rarity);
+
+                if (!inv.AddItem(drop.m_itemData))
+                {
+                    Destroy(tempObj);
+                    return null;
+                }
+
+                result = drop.m_itemData;
+                Destroy(tempObj);
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Creates a temporary enchanted item, applies Epic Loot magic data,
+        /// then calls GetTooltip so Epic Loot's patches generate the enchanted tooltip.
+        /// </summary>
+        private static string GenerateRarityTooltip(GameObject prefab, string rarity, int stack)
+        {
+            try
+            {
+                ZNetView.m_forceDisableInit = true;
+                GameObject tempObj = Instantiate(prefab);
+                ZNetView.m_forceDisableInit = false;
+
+                var drop = tempObj.GetComponent<ItemDrop>();
+                if (drop?.m_itemData == null)
+                {
+                    Destroy(tempObj);
+                    return null;
+                }
+
+                drop.m_itemData.m_stack = stack;
+                drop.m_itemData.m_quality = 1;
+                drop.m_itemData.m_durability = drop.m_itemData.GetMaxDurability();
+
+                EpicLootIntegration.ApplyRarity(drop.m_itemData, rarity);
+
+                // Pass crafting: false so Epic Loot's tooltip patch processes magic effects
+                string raw = ItemDrop.ItemData.GetTooltip(drop.m_itemData, 1, false, Game.m_worldLevel, stack);
+                string result = Localize(raw);
+
+                Destroy(tempObj);
+                return result;
+            }
+            catch (System.Exception ex)
+            {
+                TraderOverhaulPlugin.Log.LogWarning($"[TraderUI] GenerateRarityTooltip failed: {ex.Message}");
+                return null;
+            }
         }
 
         private void ExecuteSell()
@@ -2134,6 +2662,11 @@ namespace TraderOverhaul
             var newEntries = GetFilteredSellEntries();
             if (newEntries.Count > 0)
                 SelectSellItem(Mathf.Min(prevIndex, newEntries.Count - 1));
+            else
+            {
+                _selectedSellIndex = -1;
+                RefreshDescription();
+            }
 
             UpdateCoinDisplay();
         }
@@ -2485,7 +3018,9 @@ namespace TraderOverhaul
             if (!hasCat && !hasSearch) return _allBuyEntries;
             var result = _allBuyEntries.AsEnumerable();
             if (hasCat)    result = result.Where(e => e.Category == _activeCategoryFilter);
-            if (hasSearch) result = result.Where(e => e.Name.IndexOf(_searchFilter, StringComparison.OrdinalIgnoreCase) >= 0);
+            if (hasSearch) result = result.Where(e =>
+                e.Name.IndexOf(_searchFilter, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                (!string.IsNullOrEmpty(e.Rarity) && e.Rarity.IndexOf(_searchFilter, StringComparison.OrdinalIgnoreCase) >= 0));
             return result.ToList();
         }
 
@@ -2496,7 +3031,9 @@ namespace TraderOverhaul
             if (!hasCat && !hasSearch) return _allSellEntries;
             var result = _allSellEntries.AsEnumerable();
             if (hasCat)    result = result.Where(e => e.Category == _activeCategoryFilter);
-            if (hasSearch) result = result.Where(e => e.Name.IndexOf(_searchFilter, StringComparison.OrdinalIgnoreCase) >= 0);
+            if (hasSearch) result = result.Where(e =>
+                e.Name.IndexOf(_searchFilter, StringComparison.OrdinalIgnoreCase) >= 0 ||
+                (!string.IsNullOrEmpty(e.Rarity) && e.Rarity.IndexOf(_searchFilter, StringComparison.OrdinalIgnoreCase) >= 0));
             return result.ToList();
         }
 
@@ -2600,6 +3137,51 @@ namespace TraderOverhaul
                 default:
                     return "Misc";
             }
+        }
+
+        // Epic Loot m_customData key and rarity enum names (no hard dependency)
+        private const string EpicLootDataKey = "randyknapp.mods.epicloot#EpicLoot.MagicItemComponent,EpicLoot";
+        private static readonly string[] EpicLootRarityNames = { "Magic", "Rare", "Epic", "Legendary", "Mythic" };
+
+        private static string GetRarityHexColor(string rarity)
+        {
+            switch (rarity)
+            {
+                case "Magic": return "#00abff";
+                case "Rare": return "#ffff75";
+                case "Epic": return "#d078ff";
+                case "Legendary": return "#18e7a9";
+                case "Mythic": return "#ffac59";
+                default: return "#FFFFFF";
+            }
+        }
+
+        private static float GetRaritySellMultiplier(string rarity)
+        {
+            switch (rarity)
+            {
+                case "Magic": return 2f;
+                case "Rare": return 3f;
+                case "Epic": return 5f;
+                case "Legendary": return 10f;
+                case "Mythic": return 20f;
+                default: return 1f;
+            }
+        }
+
+        private static string GetItemRarity(ItemDrop.ItemData item)
+        {
+            if (item?.m_customData == null) return "";
+            if (!item.m_customData.TryGetValue(EpicLootDataKey, out string json)) return "";
+            if (string.IsNullOrEmpty(json)) return "";
+
+            // Parse "Rarity":N from the JSON without needing Epic Loot as a dependency.
+            // The value is an int: Magic=0, Rare=1, Epic=2, Legendary=3, Mythic=4
+            var match = System.Text.RegularExpressions.Regex.Match(json, "\"Rarity\"\\s*:\\s*(\\d+)");
+            if (!match.Success) return "";
+            if (!int.TryParse(match.Groups[1].Value, out int idx)) return "";
+            if (idx < 0 || idx >= EpicLootRarityNames.Length) return "";
+            return EpicLootRarityNames[idx];
         }
 
         private static string Localize(string text)

@@ -1,4 +1,5 @@
 using BepInEx;
+using BepInEx.Configuration;
 using BepInEx.Logging;
 using HarmonyLib;
 using UnityEngine;
@@ -15,10 +16,32 @@ namespace TraderOverhaul
         private static Harmony _harmony;
         internal static ManualLogSource Log;
 
+        private static ConfigEntry<bool> _enableHaldor;
+        private static ConfigEntry<bool> _enableHildir;
+        private static ConfigEntry<bool> _enableBogWitch;
+
+        internal static bool IsCustomUIEnabled(TraderKind kind)
+        {
+            switch (kind)
+            {
+                case TraderKind.Haldor: return _enableHaldor.Value;
+                case TraderKind.Hildir: return _enableHildir.Value;
+                case TraderKind.BogWitch: return _enableBogWitch.Value;
+                default: return false;
+            }
+        }
+
         private void Awake()
         {
             Log = Logger;
             Log.LogInfo($"{PluginName} v{PluginVersion} loading...");
+
+            _enableHaldor = Config.Bind("Custom UI", "EnableHaldor", true,
+                "Use the custom trader UI for Haldor.");
+            _enableHildir = Config.Bind("Custom UI", "EnableHildir", true,
+                "Use the custom trader UI for Hildir.");
+            _enableBogWitch = Config.Bind("Custom UI", "EnableBogWitch", true,
+                "Use the custom trader UI for the Bog Witch.");
 
             ConfigLoader.Initialize();
 

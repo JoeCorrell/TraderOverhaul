@@ -161,5 +161,8 @@ namespace TraderOverhaul
 
         [JsonProperty("must_defeated_boss")]
         public string requiredGlobalKey = "";
+
+        [JsonProperty("rarity")]
+        public string rarity = "";
     }
 }

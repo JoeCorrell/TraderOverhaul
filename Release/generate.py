@@ -37,7 +37,7 @@ from collections import defaultdict
 SELL_MULTIPLIER = 0.30
 CRAFTING_MARKUP = 1.15
 MIN_PRICE = 5
-MAX_PRICE = 99999
+MAX_PRICE = 999999
 
 # ============================================================================
 # ITEM CATEGORY MULTIPLIERS
@@ -69,6 +69,36 @@ CATEGORY_MULTIPLIERS = {
     'key': 2.0,             # Keys are valuable progression items
     'egg': 1.5,             # Eggs for taming/summoning
     'cosmetic': 0.7,        # Cosmetic items
+}
+
+# ============================================================================
+# EPIC LOOT RARITY VARIANTS
+# When EpicLoot is enabled, equipment items get Magic→Mythic price variants.
+# ============================================================================
+
+EL_RARITY_TIERS = ['Magic', 'Rare', 'Epic', 'Legendary', 'Mythic']
+
+EL_RARITY_PRICE_MULTIPLIERS = {
+    'Magic': 1.5,
+    'Rare': 2.5,
+    'Epic': 4.5,
+    'Legendary': 8.0,
+    'Mythic': 15.0,
+}
+
+# Minimum boss progression required per rarity tier (uses BOSS_KEYS dict)
+EL_RARITY_MIN_BOSS_TIER = {
+    'Magic': 2,       # at least defeated_eikthyr
+    'Rare': 3,        # at least defeated_gdking
+    'Epic': 4,        # at least defeated_bonemass
+    'Legendary': 6,   # at least defeated_goblinking
+    'Mythic': 7,      # at least defeated_queen
+}
+
+# Only equipment categories get rarity variants
+EL_RARITY_CATEGORIES = {
+    'weapon_1h', 'weapon_2h', 'bow', 'crossbow', 'staff',
+    'shield', 'armor_heavy', 'armor_light', 'cape',
 }
 
 # ============================================================================
@@ -124,6 +154,21 @@ RARITY_OVERRIDES = {
     'DyrnwynBladeFragment': 2.5,
     'DyrnwynHiltFragment': 2.5,
     'DyrnwynTipFragment': 2.5,
+
+    # Epic Loot — Runestones / EtchedRunestones are rarer than standard materials
+    'RunestoneMagic': 1.3,
+    'RunestoneRare': 1.3,
+    'RunestoneEpic': 1.3,
+    'RunestoneLegendary': 1.3,
+    'RunestoneMythic': 1.3,
+    'EtchedRunestoneMagic': 1.3,
+    'EtchedRunestoneRare': 1.3,
+    'EtchedRunestoneEpic': 1.3,
+    'EtchedRunestoneLegendary': 1.3,
+    'EtchedRunestoneMythic': 1.3,
+
+    # Epic Loot — Andvaranaut legendary treasure finder (EL sells for ~2000)
+    'Andvaranaut': 2.5,
 }
 
 # URLs for data sources
@@ -1084,6 +1129,7 @@ ITEM_DATABASE: Dict[str, Tuple[Biome, int, int, bool]] = {
 
 ENABLED_MODS = {
     'BowsBeforeHoes': True,  # https://thunderstore.io/c/valheim/p/Azumatt/BowsBeforeHoes/
+    'EpicLoot': True,         # https://thunderstore.io/c/valheim/p/RandyKnapp/EpicLoot/
 }
 
 MOD_DATABASES = {}
@@ -1132,6 +1178,107 @@ if ENABLED_MODS.get('BowsBeforeHoes'):
         'SeekerArrow':            {'ingredients': [('Wood', 1), ('Mandible', 1)],                              'amount': 20},
         'MistTorchArrow':         {'ingredients': [('Wood', 1), ('Eitr', 2)],                                  'amount': 20},
     })
+
+# ─── Epic Loot by RandyKnapp ────────────────────────────────────────────────
+# Enchanting materials: Shard, Dust, Reagent, Essence (4 types × 5 rarities)
+# Runestones: used for treasure maps, priced slightly higher via RARITY_OVERRIDES
+# Equipment: LeatherBelt, SilverRing, GoldRubyRing (craftable accessories)
+# Tokens: ForestToken, IronBountyToken, GoldBountyToken (sell-only currencies)
+# Andvaranaut: legendary treasure-finding ring (priced via RARITY_OVERRIDES)
+#
+# Rarity → Biome tier mapping:
+#   Magic     → Black Forest  (after Eikthyr)
+#   Rare      → Swamp         (after The Elder)
+#   Epic      → Mountain       (after Bonemass)
+#   Legendary → Mistlands      (after Yagluth)
+#   Mythic    → Ashlands       (after Seeker Queen)
+#
+# Base prices are tuned so that final prices (base × biome × category) land
+# close to Epic Loot's own Secret Stash merchant prices (5/25/100/300/600).
+if ENABLED_MODS.get('EpicLoot'):
+    MOD_DATABASES['EpicLoot'] = {
+        # ── Magic tier enchanting materials ──────────────────────────────
+        'ShardMagic':           (Biome.BLACK_FOREST,  5,  1, False, ''),
+        'DustMagic':            (Biome.BLACK_FOREST,  5,  1, False, ''),
+        'ReagentMagic':         (Biome.BLACK_FOREST,  5,  1, False, ''),
+        'EssenceMagic':         (Biome.BLACK_FOREST,  5,  1, False, ''),
+        'RunestoneMagic':       (Biome.BLACK_FOREST,  5,  1, False, ''),
+        'EtchedRunestoneMagic': (Biome.BLACK_FOREST,  5,  1, False, ''),
+
+        # ── Rare tier enchanting materials ───────────────────────────────
+        'ShardRare':            (Biome.SWAMP,  8,  1, False, ''),
+        'DustRare':             (Biome.SWAMP,  8,  1, False, ''),
+        'ReagentRare':          (Biome.SWAMP,  8,  1, False, ''),
+        'EssenceRare':          (Biome.SWAMP,  8,  1, False, ''),
+        'RunestoneRare':        (Biome.SWAMP,  8,  1, False, ''),
+        'EtchedRunestoneRare':  (Biome.SWAMP,  8,  1, False, ''),
+
+        # ── Epic tier enchanting materials ───────────────────────────────
+        'ShardEpic':            (Biome.MOUNTAIN,  16,  1, False, ''),
+        'DustEpic':             (Biome.MOUNTAIN,  16,  1, False, ''),
+        'ReagentEpic':          (Biome.MOUNTAIN,  16,  1, False, ''),
+        'EssenceEpic':          (Biome.MOUNTAIN,  16,  1, False, ''),
+        'RunestoneEpic':        (Biome.MOUNTAIN,  16,  1, False, ''),
+        'EtchedRunestoneEpic':  (Biome.MOUNTAIN,  16,  1, False, ''),
+
+        # ── Legendary tier enchanting materials ──────────────────────────
+        'ShardLegendary':           (Biome.MISTLANDS,  18,  1, False, ''),
+        'DustLegendary':            (Biome.MISTLANDS,  18,  1, False, ''),
+        'ReagentLegendary':         (Biome.MISTLANDS,  18,  1, False, ''),
+        'EssenceLegendary':         (Biome.MISTLANDS,  18,  1, False, ''),
+        'RunestoneLegendary':       (Biome.MISTLANDS,  18,  1, False, ''),
+        'EtchedRunestoneLegendary': (Biome.MISTLANDS,  18,  1, False, ''),
+
+        # ── Mythic tier enchanting materials ─────────────────────────────
+        'ShardMythic':           (Biome.ASHLANDS,  24,  1, False, ''),
+        'DustMythic':            (Biome.ASHLANDS,  24,  1, False, ''),
+        'ReagentMythic':         (Biome.ASHLANDS,  24,  1, False, ''),
+        'EssenceMythic':         (Biome.ASHLANDS,  24,  1, False, ''),
+        'RunestoneMythic':       (Biome.ASHLANDS,  24,  1, False, ''),
+        'EtchedRunestoneMythic': (Biome.ASHLANDS,  24,  1, False, ''),
+
+        # ── Equipment / Accessories ──────────────────────────────────────
+        'LeatherBelt':   (Biome.BLACK_FOREST,  20,  1, False, ''),
+        'SilverRing':    (Biome.MOUNTAIN,      15,  1, False, ''),
+        'GoldRubyRing':  (Biome.PLAINS,        20,  1, False, ''),
+
+        # ── Legendary item ───────────────────────────────────────────────
+        'Andvaranaut':   (Biome.MISTLANDS,  50,  1, False, ''),
+
+        # ── Tokens (sell-only — earned from bounties / adventures) ───────
+        'ForestToken':      (Biome.MEADOWS,  8,   10, True, ''),
+        'IronBountyToken':  (Biome.SWAMP,    10,   5, True, ''),
+        'GoldBountyToken':  (Biome.PLAINS,   12,   5, True, ''),
+    }
+
+    MOD_RECIPES.update({
+        'LeatherBelt':  {'ingredients': [('LeatherScraps', 4), ('Bronze', 1)], 'amount': 1},
+        'SilverRing':   {'ingredients': [('Silver', 1)],                       'amount': 1},
+        'GoldRubyRing': {'ingredients': [('Ruby', 1)],                         'amount': 1},
+    })
+
+    # ── Unidentified items (sell-only) ──────────────────────────────────
+    # Epic Loot registers {Biome}_{Rarity}_Unidentified for every
+    # Valheim biome (excluding None/All) × every rarity tier.
+    # Players can sell drops they don't want to identify.
+    _EL_UNID_BIOME_MAP = {
+        'Meadows':     Biome.MEADOWS,
+        'BlackForest': Biome.BLACK_FOREST,
+        'Swamp':       Biome.SWAMP,
+        'Mountain':    Biome.MOUNTAIN,
+        'Plains':      Biome.PLAINS,
+        'Ocean':       Biome.SWAMP,       # ocean content ≈ swamp era
+        'Mistlands':   Biome.MISTLANDS,
+        'AshLands':    Biome.ASHLANDS,     # Valheim enum uses capital L
+        'DeepNorth':   Biome.DEEP_NORTH,
+    }
+    _EL_UNID_RARITY_BASE = {
+        'Magic': 3, 'Rare': 6, 'Epic': 12, 'Legendary': 22, 'Mythic': 35,
+    }
+    for biome_name, biome_val in _EL_UNID_BIOME_MAP.items():
+        for rarity_name, base_price in _EL_UNID_RARITY_BASE.items():
+            prefab = f'{biome_name}_{rarity_name}_Unidentified'
+            MOD_DATABASES['EpicLoot'][prefab] = (biome_val, base_price, 1, True, '')
 
 # Items that should never appear (not real items, attacks, spawners, etc.)
 INVALID_PREFAB_PATTERNS = [
@@ -1519,6 +1666,38 @@ class ProcessedItem:
     boss_key: str
     buyable: bool
     sellable: bool
+    rarity: str = ""
+
+
+def generate_rarity_variants(base: ProcessedItem, category: str) -> List[ProcessedItem]:
+    """Generate Magic→Mythic rarity variants for an equipment item."""
+    if not ENABLED_MODS.get('EpicLoot'):
+        return []
+    if category not in EL_RARITY_CATEGORIES:
+        return []
+
+    variants = []
+    base_tier = base.biome.tier
+    for rarity in EL_RARITY_TIERS:
+        r_buy = min(MAX_PRICE, max(MIN_PRICE, int(base.buy_price * EL_RARITY_PRICE_MULTIPLIERS[rarity])))
+        r_sell = max(1, int(r_buy * SELL_MULTIPLIER))
+        min_tier = EL_RARITY_MIN_BOSS_TIER[rarity]
+        r_tier = max(base_tier, min_tier)
+        r_key = BOSS_KEYS.get(r_tier, base.boss_key)
+        variants.append(ProcessedItem(
+            prefab=base.prefab,
+            name=base.name,
+            item_type=base.item_type,
+            biome=base.biome,
+            buy_price=r_buy,
+            sell_price=r_sell,
+            stack=base.stack,
+            boss_key=r_key,
+            buyable=base.buyable,
+            sellable=base.sellable,
+            rarity=rarity,
+        ))
+    return variants
 
 
 def process_items(items_html: str, recipes_html: str) -> Tuple[List[ProcessedItem], List[ProcessedItem]]:
@@ -1721,7 +1900,15 @@ def process_items(items_html: str, recipes_html: str) -> Tuple[List[ProcessedIte
             buy_items.append(processed)
         if processed.sellable:
             sell_items.append(processed)
-    
+
+        # Generate Epic Loot rarity variants for equipment
+        category = get_item_category(prefab, item_type)
+        for variant in generate_rarity_variants(processed, category):
+            if variant.buyable:
+                buy_items.append(variant)
+            if variant.sellable:
+                sell_items.append(variant)
+
     print(f"      Buy: {len(buy_items)}, Sell: {len(sell_items)}")
     return buy_items, sell_items
 
@@ -1809,6 +1996,15 @@ def process_mod_items(mod_databases: dict) -> Tuple[List[ProcessedItem], List[Pr
                 sell_items.append(processed)
                 mod_sell_count += 1
 
+            # Generate Epic Loot rarity variants for mod equipment
+            for variant in generate_rarity_variants(processed, category):
+                if variant.buyable:
+                    buy_items.append(variant)
+                    mod_buy_count += 1
+                if variant.sellable:
+                    sell_items.append(variant)
+                    mod_sell_count += 1
+
         print(f"      [{mod_name}] {mod_buy_count} buy, {mod_sell_count} sell")
 
     return buy_items, sell_items
@@ -1818,32 +2014,37 @@ def generate_configs(buy_items: List[ProcessedItem], sell_items: List[ProcessedI
     """Generate JSON config files."""
     print("\n[6/6] Generating configs...")
     output_dir.mkdir(parents=True, exist_ok=True)
-    
-    # Sort alphabetically
-    buy_items.sort(key=lambda x: x.prefab.lower())
-    sell_items.sort(key=lambda x: x.prefab.lower())
-    
+
+    # Rarity sort order: base first, then Magic→Mythic
+    _rarity_order = {'': 0, 'Magic': 1, 'Rare': 2, 'Epic': 3, 'Legendary': 4, 'Mythic': 5}
+    sort_key = lambda x: (x.prefab.lower(), _rarity_order.get(x.rarity, 0))
+
+    buy_items.sort(key=sort_key)
+    sell_items.sort(key=sort_key)
+
     # Generate buy config
     buy_cfg = [{
         "item_prefab": i.prefab,
         "item_quantity": i.stack,
         "item_price": i.buy_price,
-        "must_defeated_boss": i.boss_key
+        "must_defeated_boss": i.boss_key,
+        "rarity": i.rarity,
     } for i in buy_items]
-    
+
     buy_path = output_dir / "TraderOverhaul.buy.json"
     with open(buy_path, 'w') as f:
         json.dump(buy_cfg, f, indent=2)
     print(f"      Buy: {buy_path} ({len(buy_cfg)} items)")
-    
+
     # Generate sell config
     sell_cfg = [{
         "item_prefab": i.prefab,
         "item_quantity": i.stack,
         "item_price": i.sell_price,
-        "must_defeated_boss": i.boss_key
+        "must_defeated_boss": i.boss_key,
+        "rarity": i.rarity,
     } for i in sell_items]
-    
+
     sell_path = output_dir / "TraderOverhaul.sell.json"
     with open(sell_path, 'w') as f:
         json.dump(sell_cfg, f, indent=2)

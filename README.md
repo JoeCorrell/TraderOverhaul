@@ -41,7 +41,7 @@ Shared configs + unified buy/sell/bank workflow.
 ## Features
 
 <p align="center">
-One unified custom UI for Haldor, Hildir, and Bog Witch with shared Buy, Sell, and Bank tabs; a shared bank balance across all three traders with deposit and withdraw support; bank-backed transactions where buying spends bank coins and selling deposits into bank coins; shared config files (`TraderOverhaul.buy.json` and `TraderOverhaul.sell.json`) for all traders; Haldor config-driven buy stock while Hildir and Bog Witch keep vanilla stock plus config overrides; sell entries that only appear when inventory and stack requirements match config; progression gating through `must_defeated_boss`; built-in search, category filters, collapsible groups, and item details; full mouse/controller support; player preview on Buy, trader preview on Sell; and automatic config creation/validation when files are missing.
+One unified custom UI for Haldor, Hildir, and Bog Witch with shared Buy, Sell, and Bank tabs; per-trader toggle to enable or disable the custom UI individually; a shared bank balance across all three traders with deposit and withdraw support; bank-backed transactions where buying spends bank coins and selling deposits into bank coins; shared config files (`TraderOverhaul.buy.json` and `TraderOverhaul.sell.json`) for all traders; Haldor config-driven buy stock while Hildir and Bog Witch keep vanilla stock plus config overrides; sell entries that only appear when inventory and stack requirements match config; progression gating through `must_defeated_boss`; built-in search, category filters, collapsible groups, and item details; full mouse/controller support; player preview on Buy, trader preview on Sell; and automatic config creation/validation when files are missing.
 </p>
 
 <hr/>
@@ -83,10 +83,26 @@ ValheimModding-JsonDotNET-13.0.4
 
 <hr/>
 
+## Per-Trader Toggle
+
+Each trader can be individually enabled or disabled for the custom UI via `BepInEx/config/com.profmags.traderoverhaul.cfg`:
+
+```ini
+[Custom UI]
+EnableHaldor = true
+EnableHildir = true
+EnableBogWitch = true
+```
+
+Set any to `false` and that trader will use the vanilla `StoreGui` instead.
+
+<hr/>
+
 ## Compatibility Notes
 
 Targets these trader prefabs: `Haldor`, `Hildir`, `BogWitch`.<br/>
 Other trader prefabs fall back to vanilla `StoreGui`.<br/>
+Disabled traders also fall back to vanilla `StoreGui`.<br/>
 Mods that replace or heavily patch those trader interactions may conflict.
 
 <hr/>

@@ -7,6 +7,7 @@ namespace TraderOverhaul
     {
         private static TraderUI _traderUI;
         private static BankUI _bankUI;
+        private static bool _customUIActive;
 
         internal static void SetTraderUI(TraderUI ui) => _traderUI = ui;
         internal static void SetBankUI(BankUI ui) => _bankUI = ui;
@@ -15,20 +16,60 @@ namespace TraderOverhaul
 
         [HarmonyPatch(typeof(StoreGui), "Show")]
         [HarmonyPrefix]
+        [HarmonyPriority(Priority.First)]
         private static bool StoreGui_Show_Prefix(StoreGui __instance, Trader trader)
         {
             if (_traderUI == null) return true;
-            if (GetTraderKind(trader) == TraderKind.Unknown) return true;
+            var kind = GetTraderKind(trader);
+            if (kind == TraderKind.Unknown) return true;
+            if (!TraderOverhaulPlugin.IsCustomUIEnabled(kind)) return true;
+
+            // Hide StoreGui root so any other mod postfixes (e.g. Epic Loot MerchantPanel)
+            // that still run cannot make their UI visible.
+            __instance.gameObject.SetActive(false);
+            _customUIActive = true;
+
             _traderUI.Show(trader, __instance);
             return false;
         }
 
+        // Runs AFTER any other mod postfixes on StoreGui.Show (e.g. Epic Loot).
+        // Ensures StoreGui stays hidden and any panels other mods added are disabled.
+        [HarmonyPatch(typeof(StoreGui), "Show")]
+        [HarmonyPostfix]
+        [HarmonyPriority(Priority.Last)]
+        private static void StoreGui_Show_Postfix(StoreGui __instance)
+        {
+            if (!_customUIActive) return;
+
+            // Force StoreGui inactive — Epic Loot's postfix may have re-enabled it
+            // or parented visible UI elements onto it.
+            __instance.gameObject.SetActive(false);
+        }
+
         [HarmonyPatch(typeof(StoreGui), "Hide")]
         [HarmonyPostfix]
-        private static void StoreGui_Hide_Postfix()
+        private static void StoreGui_Hide_Postfix(StoreGui __instance)
         {
             if (_traderUI != null && _traderUI.IsVisible)
                 _traderUI.Hide();
+
+            if (_customUIActive)
+            {
+                // Restore StoreGui so it works normally next time
+                __instance.gameObject.SetActive(true);
+                _customUIActive = false;
+            }
+        }
+
+        // Prevent StoreGui.Update from running while our UI is active.
+        // Other mods may patch Update to add per-frame UI logic.
+        [HarmonyPatch(typeof(StoreGui), "Update")]
+        [HarmonyPrefix]
+        [HarmonyPriority(Priority.First)]
+        private static bool StoreGui_Update_Prefix()
+        {
+            return !_customUIActive;
         }
 
         [HarmonyPatch(typeof(StoreGui), "IsVisible")]
