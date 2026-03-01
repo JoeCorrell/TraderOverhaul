@@ -38,6 +38,13 @@ Shared configs + unified buy/sell/bank workflow.
 
 <hr/>
 
+<h3>Epic Loot</h3>
+<p align="center">
+<img src="https://raw.githubusercontent.com/JoeCorrell/TraderOverhaul/main/Screenshots/EpicLoot.jpg" alt="Epic Loot Integration" width="600"/>
+</p>
+
+<hr/>
+
 ## Features
 
 <p align="center">
@@ -98,16 +105,10 @@ Set any to `false` and that trader will use the vanilla `StoreGui` instead.
 
 <hr/>
 
-<h3>Epic Loot</h3>
-<p align="center">
-<img src="https://raw.githubusercontent.com/JoeCorrell/TraderOverhaul/main/Screenshots/EpicLoot.jpg" alt="Epic Loot Integration" width="600"/>
-</p>
-
-<hr/>
-
 ## Compatible Mods
 
-**[Epic Loot](https://thunderstore.io/c/valheim/p/RandyKnapp/EpicLoot/)** — Full integration. Buy and sell Magic, Rare, Epic, Legendary, and Mythic rarity items with proper enchantments, stat bonuses, colored icon backgrounds, rarity sub-categories, and scaled pricing. TraderOverhaul fully overrides Epic Loot's Haldor UI.
+**[Epic Loot](https://thunderstore.io/c/valheim/p/RandyKnapp/EpicLoot/)** — Full integration. Buy and sell Magic, Rare, Epic, Legendary, and Mythic rarity items with proper enchantments, stat bonuses, colored icon backgrounds, rarity sub-categories, and scaled pricing. TraderOverhaul fully overrides Epic Loot's Haldor UI.<br/>
+**[BowsBeforeHoes](https://thunderstore.io/c/valheim/p/Horem/BowsBeforeHoes/)** — Supported. BowsBeforeHoes bows, quivers, and arrows are included in the generated buy/sell configs with recipe-based pricing.
 
 <hr/>
 
