@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.0.2
+- Added Epic Loot integration with full rarity support (Magic, Rare, Epic, Legendary, Mythic)
+- Purchased rarity items now receive proper enchantments, stat bonuses, and colored item backgrounds via Epic Loot's SaveMagicItem API
+- Rarity items display colored icon backgrounds and rarity sub-categories in buy and sell lists
+- Rarity items from inventory are now sellable with scaled pricing (Magic 2x through Mythic 20x)
+- TraderOverhaul fully overrides Epic Loot's Haldor MerchantPanel UI
+- Added hover effects to all UI elements (list items, category headers, tabs, action button, search)
+- Extended gamepad controller support for rarity sub-header toggling
+- Added per-trader BepInEx config toggles (EnableHaldor, EnableHildir, EnableBogWitch)
+- Fixed tooltip showing same stats for all rarities (now uses crafting:false for Epic Loot tooltip patches)
+- Fixed sell description not clearing when sell list becomes empty
+- Updated generate.py with Epic Loot rarity variants and balanced pricing
+
 ## 0.0.1
 - Unified Haldor, Hildir, and Bog Witch into one custom trader UI mod
 - Switched to shared configs: `TraderOverhaul.buy.json` and `TraderOverhaul.sell.json`

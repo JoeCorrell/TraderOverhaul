@@ -11,7 +11,7 @@ namespace TraderOverhaul
     {
         public const string PluginGUID = "com.profmags.traderoverhaul";
         public const string PluginName = "Trader Overhaul";
-        public const string PluginVersion = "0.0.1";
+        public const string PluginVersion = "0.0.2";
 
         private static Harmony _harmony;
         internal static ManualLogSource Log;

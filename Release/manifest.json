@@ -1,7 +1,7 @@
 {
   "name": "TraderOverhaul",
   "author": "ProfMags",
-  "version_number": "0.0.1",
+  "version_number": "0.0.2",
   "website_url": "https://github.com/JoeCorrell/TraderOverhaul",
   "description": "Unified custom trader UI overhaul for Haldor, Hildir, and Bog Witch with balanced, fair prices, boss progression support, and Haldor custom buy/sell logic preserved.",
   "dependencies": [

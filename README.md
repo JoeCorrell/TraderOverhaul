@@ -5,7 +5,7 @@
 One custom trader UI for **Haldor**, **Hildir**, and **Bog Witch**.<br/>
 Shared configs + unified buy/sell/bank workflow.
 
-[![Version](https://img.shields.io/badge/Version-0.0.1-blue?style=for-the-badge)](https://github.com/JoeCorrell/TraderOverhaul/releases)
+[![Version](https://img.shields.io/badge/Version-0.0.2-blue?style=for-the-badge)](https://github.com/JoeCorrell/TraderOverhaul/releases)
 [![BepInEx](https://img.shields.io/badge/BepInEx-5.4.2200+-orange?style=for-the-badge)](#requirements)
 [![Traders](https://img.shields.io/badge/Traders-3-green?style=for-the-badge)](#features)
 
@@ -95,6 +95,19 @@ EnableBogWitch = true
 ```
 
 Set any to `false` and that trader will use the vanilla `StoreGui` instead.
+
+<hr/>
+
+<h3>Epic Loot</h3>
+<p align="center">
+<img src="https://raw.githubusercontent.com/JoeCorrell/TraderOverhaul/main/Screenshots/EpicLoot.jpg" alt="Epic Loot Integration" width="600"/>
+</p>
+
+<hr/>
+
+## Compatible Mods
+
+**[Epic Loot](https://thunderstore.io/c/valheim/p/RandyKnapp/EpicLoot/)** — Full integration. Buy and sell Magic, Rare, Epic, Legendary, and Mythic rarity items with proper enchantments, stat bonuses, colored icon backgrounds, rarity sub-categories, and scaled pricing. TraderOverhaul fully overrides Epic Loot's Haldor UI.
 
 <hr/>
 
